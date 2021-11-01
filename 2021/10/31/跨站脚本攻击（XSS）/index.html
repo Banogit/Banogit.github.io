@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://bano247.com">
   <title>跨站脚本攻击（XSS） | Bano写字的地方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="定义与分类定义：hacker通过“HTML注入”篡改网页，插入了恶意的脚本 分类：  反射型XSS：把用户输入的数据反射给浏览器，换言之，hacker需要诱导用户点击一个恶意链接才能攻击成功 存储型XSS：把用户输入的数据存储在服务端，例如，hacker写了一个含有恶意脚本的博客，博客存储在服务器，每一个访问该博客的用户都会执行这个恶意脚本 DOM Based XSS：修改页面DOM节点的XSS">
+  <meta name="description" content="人生太长，我们怕寂寞，人生太短，我们怕来不及。  ——张爱玲《半生缘》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跨站脚本攻击（XSS）">
 <meta property="og:url" content="https://bano247.com/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/index.html">
 <meta property="og:site_name" content="Bano写字的地方">
-<meta property="og:description" content="定义与分类定义：hacker通过“HTML注入”篡改网页，插入了恶意的脚本 分类：  反射型XSS：把用户输入的数据反射给浏览器，换言之，hacker需要诱导用户点击一个恶意链接才能攻击成功 存储型XSS：把用户输入的数据存储在服务端，例如，hacker写了一个含有恶意脚本的博客，博客存储在服务器，每一个访问该博客的用户都会执行这个恶意脚本 DOM Based XSS：修改页面DOM节点的XSS">
+<meta property="og:description" content="人生太长，我们怕寂寞，人生太短，我们怕来不及。  ——张爱玲《半生缘》">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://bano247.com/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/1.jpg">
 <meta property="og:image" content="https://bano247.com/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/2.png">
 <meta property="article:published_time" content="2021-10-31T15:53:17.000Z">
-<meta property="article:modified_time" content="2021-10-31T15:56:15.613Z">
+<meta property="article:modified_time" content="2021-11-01T18:19:56.851Z">
 <meta property="article:author" content="Bano">
-<meta property="article:tag" content="《白帽子讲web安全》第二篇第三章">
+<meta property="article:tag" content="《白帽子讲web安全》">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://bano247.com/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/1.jpg">
   
@@ -138,7 +138,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-跨站脚本攻击（XSS）" class="article article-type-post " itemscope itemprop="blogPost">
+            
+
+  <i class="fa fa-thumb-tack"></i>
+  <font color=7D26CD>置顶</font>
+  <span class="post-meta-divider">|</span>
+
+
+<article id="post-跨站脚本攻击（XSS）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -159,13 +166,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/1.jpg" alt="XSS"></p>
+<p>人生太长，我们怕寂寞，人生太短，我们怕来不及。  ——张爱玲《半生缘》</p>
+<span id="more"></span>
+
 <h2 id="定义与分类"><a href="#定义与分类" class="headerlink" title="定义与分类"></a>定义与分类</h2><p>定义：hacker通过“HTML注入”篡改网页，插入了恶意的脚本</p>
+<p>本质：是一种”HTML注入”，用户传入的数据被当作HTML代码的一部分被执行</p>
 <p>分类：</p>
 <ul>
 <li>反射型XSS：把用户输入的数据反射给浏览器，换言之，hacker需要诱导用户点击一个恶意链接才能攻击成功</li>
 <li>存储型XSS：把用户输入的数据存储在服务端，例如，hacker写了一个含有恶意脚本的博客，博客存储在服务器，每一个访问该博客的用户都会执行这个恶意脚本</li>
 <li>DOM Based XSS：修改页面DOM节点的XSS，一种特殊的反射型XSS</li>
 </ul>
+<p>一般来说，存储型XSS更危险，它存储来服务器中，可能会跨页面存在，它不会改变URL的原有结构，因此有时能逃过一些IDS（入侵检测系统）的检测</p>
 <h2 id="XSS-Payload"><a href="#XSS-Payload" class="headerlink" title="XSS Payload"></a>XSS Payload</h2><h3 id="Cookie劫持"><a href="#Cookie劫持" class="headerlink" title="Cookie劫持"></a>Cookie劫持</h3><p>hacker首先要想办法获取你的cookie，但如果他直接copy到自己的cookie目录，浏览器是不认的，因为浏览器有一个<code>index.dat</code>文件，里面存储了cookie文件的创建时间以及是否有修改，所以还要想办法从时间上骗过浏览器</p>
 <h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
 <li>escape():将字符串编码，以便在所有计算机上都可以读取。但已经渐渐被废弃了，使用<code>encodeURI</code>或<code>encodeURIComponent</code>代替</li>
@@ -188,7 +200,178 @@
 <li>比如客户端有JRE环境，XSS可以通过调用JavaApplet的接口来获取客户端本地IP地址</li>
 <li>metasploit引擎有一个测试页面，综合了很多第三方软件的功能，用于抓取用户本地信息</li>
 </ul>
-<h2 id="XSS构造技巧"><a href="#XSS构造技巧" class="headerlink" title="XSS构造技巧"></a>XSS构造技巧</h2>
+<h2 id="XSS构造技巧"><a href="#XSS构造技巧" class="headerlink" title="XSS构造技巧"></a>XSS构造技巧</h2><p>注：一般情况下，如果只用JS，是没办法控制浏览器发出的HTTP头的</p>
+<h3 id="利用字符编码"><a href="#利用字符编码" class="headerlink" title="利用字符编码"></a>利用字符编码</h3><p>为了防止被XSS攻击，如果你在浏览器中，输入给DOM变量的内容中，存在双引号，浏览器会自动帮你转义过来。一些hacker正是利用这一点，例如传输<code>%c1&quot;;alert(/XSS/);//</code>给DOM变量，那么通过浏览器转义后，变成<code>%c1\&quot;;alert(/XSS/);//</code>，而<code>%c1\</code>其实是unicode中的一个字符编码，所以被解析后，转义符号<code>\</code>相当于被<code>%c1</code>吃掉了，从而传入了真正的双引号进入变量，从而实现了XSS攻击</p>
+<h3 id="绕过长度限制"><a href="#绕过长度限制" class="headerlink" title="绕过长度限制"></a>绕过长度限制</h3><p>为了防止hacker传入payload给DOM变量，可能会对DOM变量的长度做限制，这样可以截断hacker的payload，使其失效。</p>
+<p>hacker的应对措施：</p>
+<h4 id="优化JavaScript代码"><a href="#优化JavaScript代码" class="headerlink" title="优化JavaScript代码"></a>优化JavaScript代码</h4><p>用一些event（例如onclick）来代替<code>&lt;script&gt;</code>标签，从而减少代码长度</p>
+<h4 id="把代码写在“location-hash”"><a href="#把代码写在“location-hash”" class="headerlink" title="把代码写在“location.hash”"></a>把代码写在“location.hash”</h4><ul>
+<li>根据http协议，location.hash的内容不会随http包发送，自然不会在服务器的web日志中留下记录</li>
+<li>例如，可以传入<code>&quot;onclick = &quot;eval(location.hash.substring(1))</code>，其中，eval会计算字符串并执行其中的JS代码，因为location.hash的第一个字符是#，所以要去掉。location.hash本身没有长度限制，但url有，如果还需要更长的空间，可以考虑加载远程代码</li>
+<li>具体问题具体分析，例如：</li>
+</ul>
+<p>hacker要给2个变量传值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id = <span class="number">1</span> type = <span class="string">&quot;text&quot;</span> value = <span class="string">&quot;&quot;</span> /&gt;</span><br><span class="line">xxxxxxxxxxxxxxxxx</span><br><span class="line">&lt;input id = <span class="number">2</span> type = <span class="string">&quot;text&quot;</span> value = <span class="string">&quot;&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中，第一个限制只能传输小于等于6个字节的值，第二个允许写入更多的字节。那么，hacker在第一个input中输入<code>&quot;&gt;&lt;!--</code>，在第二个input中输入<code>--&gt;&lt;script&gt;alert(/XSS/);&lt;script&gt;</code>,效果如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id = <span class="number">1</span> type = <span class="string">&quot;text&quot;</span> value = <span class="string">&quot;&quot;</span>&gt;&lt;!--<span class="string">&quot; /&gt;</span></span><br><span class="line"><span class="string">xxxxxxxxxxxxxxxxx</span></span><br><span class="line"><span class="string">&lt;input id = 2 type = &quot;</span>text<span class="string">&quot; value = &quot;</span>--&gt;&lt;script&gt;alert(<span class="regexp">/XSS/</span>);&lt;script&gt;<span class="string">&quot; /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>相当于，通过注释符号，打通了2个变量，给第一个变量赋予了更多的值，同时也把自己的payload给了第一个变量</p>
+<h3 id="使用-lt-base-gt-标签"><a href="#使用-lt-base-gt-标签" class="headerlink" title="使用&lt;base&gt;标签"></a>使用<code>&lt;base&gt;</code>标签</h3><ul>
+<li>作用：定义页面上使用相对路径的标签的hosting地址</li>
+<li>作用范围：从<code>&lt;base&gt;</code>标签出现，到最后</li>
+<li>hacker可以给网页插入<code>&lt;base&gt;</code>标签，写上自己服务器的hosting，然后在自己的服务器上伪造图片链接等等</li>
+</ul>
+<h3 id="使用window-name"><a href="#使用window-name" class="headerlink" title="使用window.name"></a>使用window.name</h3><p>window对象不同于document对象，很多时候不受同源策略的限制。例如：</p>
+<p><a target="_blank" rel="noopener" href="http://www.a.com/test.html">www.a.com/test.html</a> 代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="built_in">window</span>.name = <span class="string">&quot;alert(document.cookie)&quot;</span>;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"><span class="built_in">window</span>.location = <span class="string">&quot;http://www.b.com/test1.html&quot;</span>;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.b.com/test1.html">www.b.com/test1.html</a> 代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">eval</span>(name);</span><br><span class="line">&lt;script&gt;</span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>成功把a网站的cookie，在b网站显示了出来！</p>
+<h3 id="回旋镖"><a href="#回旋镖" class="headerlink" title="回旋镖"></a>回旋镖</h3><ul>
+<li>反射型XSS也可以像存储型XSS一样使用，方法就是把反射型XSS嵌入存储型XSS中</li>
+<li>因为浏览器的同源策略的原因，A域上的XSS很难影响到B域上的用户</li>
+<li>如果在A域中存在一个存储型XSS_A，B域中存在一个反射型XSS_B，那么在访问A域时，会触发XSS_B，从而实现A域的XSS攻击B域的效果</li>
+</ul>
+<h3 id="其他方面"><a href="#其他方面" class="headerlink" title="其他方面"></a>其他方面</h3><p>用Flash也可以进行XSS攻击，在JS的开发框架（例如jQuery）中，也会存在XSS漏洞</p>
+<h2 id="XSS的防御"><a href="#XSS的防御" class="headerlink" title="XSS的防御"></a>XSS的防御</h2><h3 id="HttpOnly"><a href="#HttpOnly" class="headerlink" title="HttpOnly"></a>HttpOnly</h3><ul>
+<li>HttpOnly解决的Cookie劫持攻击</li>
+<li>方法：浏览器禁止页面的JavaScript访问带有HttpOnly属性的Cookie</li>
+</ul>
+<h3 id="输入检查"><a href="#输入检查" class="headerlink" title="输入检查"></a>输入检查</h3><ul>
+<li>有一点类似于“白名单”的检查方式，比如用户在创建用户名和密码的时候，会有格式规定</li>
+<li>输入检查的逻辑一定要在服务端，如果只在客户端，很容易被hacker绕过。现在普遍的做法是：在服务端和客户端做相同的逻辑检查，客户端的逻辑检查用以阻挡误操作的正常用户，减轻服务端的负担，服务端的逻辑检查保证安全性</li>
+<li>XSS Filter：用以检查敏感字符，比如<code>&lt;</code>、<code>&gt;</code>等。但XSS Filter往往不够智能，因为在检查变量时，还不知道变量的输出语境，所以有时候无法阻挡危险数据，有时候会对普通数据造成意想不到的影响</li>
+</ul>
+<p>注：因为XSS攻击发生在MVC框架中的View层，所以输入检查并不是在真正发生攻击的地方作防御。所以输入检查只能算是奇招，在一些特殊的情况下，确实有奇效</p>
+<h4 id="处理富文本"><a href="#处理富文本" class="headerlink" title="处理富文本"></a>处理富文本</h4><ul>
+<li>有些时候，网站需要用户自己提交富文本，例如在论坛里发帖，帖子里有照片、视频、表格等，这些都需要通过HTML代码来实现</li>
+<li>因为用户提交数据的语境，实在一开始就完整清楚的，所以可以设计出一个相对比较完善的XSS Filter<ul>
+<li>XSS Filter应该过滤事件、<code>&lt;iframe&gt;</code>、<code>&lt;script&gt;</code>等，但在标签的选择上，最好使用<strong>白名单</strong>，避免使用<strong>黑名单</strong>，例如：只允许<code>&lt;a&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;div&gt;</code>等比较安全的标签</li>
+</ul>
+</li>
+</ul>
+<h3 id="输出检查"><a href="#输出检查" class="headerlink" title="输出检查"></a>输出检查</h3><ul>
+<li>富文本：一种文本格式。特点是所见即所得</li>
+<li>除了富文本的输出外，在变量输出到页面时，可以用编码或转义的方式防御XSS攻击</li>
+</ul>
+<h4 id="安全的编码函数"><a href="#安全的编码函数" class="headerlink" title="安全的编码函数"></a>安全的编码函数</h4><ul>
+<li>HTML : HtmlEncode()</li>
+<li>URL : URLEncode()，将字符转换为<code>%HH</code>的形式</li>
+<li>PHP : htmlentites(),htmlspecialchars()</li>
+<li>JavaScript : JavascriptEncode()</li>
+<li>JavascriptEncode：要用<code>\</code>对特殊字符进行转义，要求输出的变量必须在引号内部</li>
+<li>更加严格的JavascriptEncode：除了数字、字母外的所有字符，都适用十六进制<code>\xHH</code>的方式进行编码</li>
+</ul>
+<h4 id="在正确的地方使用正确的编码方式"><a href="#在正确的地方使用正确的编码方式" class="headerlink" title="在正确的地方使用正确的编码方式"></a>在正确的地方使用正确的编码方式</h4><ul>
+<li>XSS攻击发生在MVC架构中的View层，大部分XSS漏洞可以在Model系统中解决</li>
+<li>实例：在Python的框架<code>web2py</code>和<code>Django</code>中，会默认使用<code>HtmlEncode</code>编码，但这也并不是天衣无缝的</li>
+</ul>
+<p>页面代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;$var&#x27;);&quot;</span>&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果用户输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;<span class="keyword">var</span> = htmlencode(<span class="string">&quot;&#x27;);alert(&#x27;2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意这里：传给htmlencode函数的是字符串“);alert(‘2”</p>
+<p>这样，对变量在进行HtmlEncode编码，相当于什么都没有变，对于浏览器来说，htmlparser会优先于JavaScript Parser的执行，所以解析过程是被htmlencode的字符先被解码，然后再执行JavaScript事件。</p>
+<p>相当于经过htmlparser解析后得到：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">&quot;alert(&#x27;&#x27;);alert(&#x27;2&#x27;);&quot;</span>&gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>XSS攻击成功</p>
+<h2 id="XSS防御的正确打开方式"><a href="#XSS防御的正确打开方式" class="headerlink" title="XSS防御的正确打开方式"></a>XSS防御的正确打开方式</h2><p>如果想要根治一个漏洞，就要从漏洞的本质着手。</p>
+<p>根据XSS本质，用户输入的变量，它可能被填充到html代码的各种各样的地方，具体问题需要具体分析</p>
+<h3 id="在HTML标签中输出"><a href="#在HTML标签中输出" class="headerlink" title="在HTML标签中输出"></a>在HTML标签中输出</h3><p>场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;$var&lt;/div&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span>$var<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>hacker输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$var = <span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=# onerror=alert(<span class="regexp">/xss/</span>) /&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>防御方法：对变量使用HtmlEncode</strong></p>
+<h3 id="在html属性中输出"><a href="#在html属性中输出" class="headerlink" title="在html属性中输出"></a>在html属性中输出</h3><p>场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;abc&quot;</span> name=<span class="string">&quot;$var&quot;</span> &gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>hacker输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$var = <span class="string">&quot;&gt; &lt;script&gt;alert(/xss/)&lt;/script&gt; &lt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>防御方法：对变量使用HtmlEncode</strong></p>
+<p><strong>或者用更加严格的JavascriptEncode：除了数字、字母外的所有字符，都适用十六进制<code>\xHH</code>的方式进行编码</strong></p>
+<h3 id="在-lt-scrip-gt-标签中输出"><a href="#在-lt-scrip-gt-标签中输出" class="headerlink" title="在&lt;scrip&gt;标签中输出"></a>在<code>&lt;scrip&gt;</code>标签中输出</h3><p>场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> x = <span class="string">&quot;$var&quot;</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在攻击时，确保语法正确，确保输出的变量在引号内（这是JavascriptEncode规定的）</p>
+<p>hacker输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;;alert(/xss/); //</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>防御方法：对变量使用JavascriptEncode</strong></p>
+<h3 id="在事件中输出"><a href="#在事件中输出" class="headerlink" title="在事件中输出"></a>在事件中输出</h3><p>场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=# onclick=<span class="string">&quot;funcA(&#x27;var&#x27;)&quot;</span> &gt;test&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>hacker输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;);alert(/xss/);//</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>防御方法：对变量使用JavascriptEncode</strong></p>
+<h3 id="在CSS中输出"><a href="#在CSS中输出" class="headerlink" title="在CSS中输出"></a>在CSS中输出</h3><ul>
+<li>CSS中的XSS方式非常多样化，一般情况下，尽可能地禁止用户输入的变量在“<code>&lt;style&gt;</code>标签”、“HTML标签的style属性”和“CSS文件”中输出</li>
+<li>如果一定需要的话，建议使用OWASP ESAPI提供的<code>encodeForCSS()</code>函数，这个函数会把除数字、字母外的所有字符编码为十六进制<code>\uHH</code></li>
+</ul>
+<h3 id="在地址中输出"><a href="#在地址中输出" class="headerlink" title="在地址中输出"></a>在地址中输出</h3><p>URL = Protocal + Host + Path + Search + Hash</p>
+<h4 id="在Path或者Search中输出"><a href="#在Path或者Search中输出" class="headerlink" title="在Path或者Search中输出"></a>在Path或者Search中输出</h4><p>场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;http:/www.evil.com/?test=$var&quot;</span> &gt;test&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>hacker输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$var = <span class="string">&quot;onclick = alert(/xss/)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>防御方法：对变量使用URLEncode</strong></p>
+<p>但是，Protocol和Host不能用URLEncode，因为会把“：//”、“.”都编码掉，改变了URL的语义</p>
+<h4 id="伪协议的XSS"><a href="#伪协议的XSS" class="headerlink" title="伪协议的XSS"></a>伪协议的XSS</h4><p>场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;$var&quot;</span> &gt;test&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>hacker输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$var = javascript:alert(<span class="regexp">/xss/</span>);</span><br></pre></td></tr></table></figure>
+
+<p>除了<code>javascript</code>，还有<code>vbscript</code>、<code>dataURL</code>可以作为伪协议</p>
+<p><strong>防御方法：检查变量开头是不是http，如果不是，自动加上</strong></p>
+<h2 id="防御DOM-Based-XSS"><a href="#防御DOM-Based-XSS" class="headerlink" title="防御DOM Based XSS"></a>防御DOM Based XSS</h2><ul>
+<li>一般的XSS：服务器应用直接输数据出到HTML页面</li>
+<li>DOM Based XSS：JavaScript输出数据到HTML页面</li>
+</ul>
+<p>所以之前的解决方式就不太适用</p>
+<p>场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> x = <span class="string">&quot;$var&quot;</span>;</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;a href=&#x27;&quot;</span> +x+ <span class="string">&quot;&#x27;&gt;test&lt;/a&gt; &quot;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>假如为了保护“$var”直接在<code>&lt;script&gt;</code>产生XSS，服务器对变量进行javascriptEncode编码，但在执行document.write时，浏览器重新渲染了页面，在<code>&lt;script&gt;</code>执行时，已经为x进行了解码，XSS自然就成功了</p>
+<p><strong>防御方法：在“$var”输入到<code>&lt;script&gt;</code>时，执行一次JavaScriptEncode；其次，在document.write输出到HTML页面时：如果输出到事件或者脚本，再进行一次JavaScriptEncode；如果输出到HTML内容或者属性，就再做一次HtmlEncode</strong></p>
+<h3 id="从JavaScript输出到HTML的必经之路"><a href="#从JavaScript输出到HTML的必经之路" class="headerlink" title="从JavaScript输出到HTML的必经之路"></a>从JavaScript输出到HTML的必经之路</h3><ul>
+<li>document.write()</li>
+<li>document.writeln()</li>
+<li>xxx.innerHTML = </li>
+<li>xxx.outerHTML = </li>
+<li>innerHTML.replace</li>
+<li>document.attachEvent()</li>
+<li>window.attachEvent()</li>
+<li>document.location.replace()</li>
+<li>document.location.assign()</li>
+<li>等等</li>
+</ul>
+<p>需要关注上面这几个地方的参数是否可以被用户控制</p>
+<p>还有下面这些地方也可以成为DOM Based XSS的输入点：</p>
+<ul>
+<li>页面中所有的input框</li>
+<li>window.location(href、hash等)</li>
+<li>window.name</li>
+<li>document.referrer</li>
+<li>document.cookie</li>
+<li>localstorage</li>
+<li>XMLHttpRequest返回的数据</li>
+<li>等等</li>
+</ul>
+
       
 
       
@@ -216,13 +399,18 @@
     </div>
     <div class="article-info article-info-index">
       
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">《白帽子讲web安全》第二篇第三章</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
         		</li>
       		
 		</ul>
@@ -292,6 +480,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2021/11/01/%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84window%E4%B8%8Edocument/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          网页中的window与document
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/10/31/Cookie%E4%B8%8ESession/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Cookie与Session</div>
@@ -328,6 +525,7 @@
   
 
   
+
 
 
           </div>
@@ -441,11 +639,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">《白帽子讲web安全》第二篇第二章</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">《白帽子讲web安全》第二篇第三章</a>
+                <a href="javascript:void(0)" class="js-tag color2">《白帽子讲web安全》</a>
               </li>
             
             <div class="clearfix"></div>
@@ -570,5 +764,15 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+
+  <!--动态线条背景-->
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.9' zIndex="-1" count="300" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
 </body>
 </html>
+
+
+
