@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bano247.com">
-  <title>Tag: web前端 | Bano写字的地方</title>
+  <title>认证与会话管理 | Bano写字的地方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Bano写字的地方">
-<meta property="og:url" content="https://bano247.com/tags/web%E5%89%8D%E7%AB%AF/index.html">
+  <meta name="description" content="我想知道该如何戒掉你。  ——《断背山》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认证与会话管理">
+<meta property="og:url" content="https://bano247.com/2021/11/06/%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="Bano写字的地方">
+<meta property="og:description" content="我想知道该如何戒掉你。  ——《断背山》">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bano247.com/2021/11/06/%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/1.jpg">
+<meta property="article:published_time" content="2021-11-05T17:34:02.000Z">
+<meta property="article:modified_time" content="2021-11-05T17:48:50.341Z">
 <meta property="article:author" content="Bano">
+<meta property="article:tag" content="《白帽子讲web安全》">
+<meta property="article:tag" content="web后端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bano247.com/2021/11/06/%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Bano写字的地方" type="application/atom+xml">
   
@@ -141,357 +149,320 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-认证与会话管理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      认证与会话管理
+    </h1>
+  
+
+        
+        <a href="/2021/11/06/%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/" class="archive-article-date">
+  	<time datetime="2021-11-05T17:34:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-06</time>
+</a>
+        
+
+        <!-- 《开始添加字数统计-->
+     
+      
+
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        
+       <i class="icon-statistics"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+         
+        <i class="icon-book icon"></i>
+        <span class="post-meta-item-text"> 阅读时长≈</span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
+
+
+
+
     
+    <!-- 添加字数统计完成》 -->
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2021/11/06/%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/1.jpg"></p>
+<p>我想知道该如何戒掉你。  ——《断背山》</p>
+<span id="more"></span>
+
+<h2 id="Who-am-I"><a href="#Who-am-I" class="headerlink" title="Who am I?"></a>Who am I?</h2><ul>
+<li>认证(Authentication)：目的是认出用户是谁</li>
+<li>授权(Authorization)：目的是决定用户能做什么</li>
+<li>认证实际上是一个验证凭证的过程</li>
+<li>只有一个凭证要认证就是“单因素认证”，有2个或多个凭证要认证就是“双因素认证”或“多凭证认证”，多凭证认证比较安全，但用户体验不好</li>
+</ul>
+<h2 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h2><ul>
+<li>现在的hacker常用的一种暴力破解手段，不是破解密码，而是选择一个弱口令，例如“123456”，然后猜用户名。用户名一般都是公开的，所以hacker可以收集一份用户名字典，使得攻击成本降低</li>
+<li>密码必须以不可逆的加密算法，或者是单向散列函数算法，加密后存储在数据库</li>
+<li>将明文密码经过哈希后（比如MD5或者SHA-1）在保存在数据库中，是目前业界比较普遍的做法</li>
+<li>目前hacker常用的破解MD5后密码的方式是“彩虹表(Rainbow Table)”</li>
+<li>Rainbow Table：收集尽量多的密码和对应的MD5，类似字典一样，通过MD5的值查询密码明文。定期计算一些数据的MD5的值，扩充字典</li>
+<li>Salt：为了避免hacker用彩虹表查到用户的密码明文，在用户注册时，会加上一个Salt（随机的一个字符串）再计算哈希值，然后保存在数据库。验证时，也要把用户输入的密码加上这个Salt，再做哈希计算，然后在验证。这个Salt要保存在服务器的配置文件中，并妥善管理</li>
+</ul>
+<h2 id="多因素认证"><a href="#多因素认证" class="headerlink" title="多因素认证"></a>多因素认证</h2><p>例如，支付宝采用了密码和数字证书的双重认证，那么成功完成交易的条件就是：</p>
+<ul>
+<li>密码正确</li>
+<li>进行支付的电脑必须安装了该用户的数字证书</li>
+</ul>
+<h2 id="Session与认证"><a href="#Session与认证" class="headerlink" title="Session与认证"></a>Session与认证</h2><ul>
+<li>Session劫持就是hacker通过截取SessionID(<strong>sid</strong>)，来登录到目标账户的攻击方法</li>
+<li>Session可以保存在Cookie，也可以保存在URL(不安全)</li>
+<li>如果Session在Cookie中被劫持，可以被称为Cookie劫持。对于XSS窃取Cookie的攻击，可以给Cookie加上httponly</li>
+<li>但还有其他泄露途径，例如<strong>网络被嗅探</strong>，或者<strong>Cookie文件窃取</strong>，都是客户端环境安全，需要从客户端下手</li>
+<li>一些手机浏览器因为不支持Cookie，只能将SessionID放在url里，hacker可以利用Referer来窃取</li>
+<li>在生成SessionID时，要保证很强的随机性，例如用足够强的为随机数生成算法</li>
+</ul>
+<h2 id="Session-Fixation"><a href="#Session-Fixation" class="headerlink" title="Session Fixation"></a>Session Fixation</h2><p>过程：</p>
+<ul>
+<li>hacker像访问网站，没有完成认证，但拿到了SessionID，例如认证前的url是<code>http://bbs.xxx.com/wsp/index.php?action=forum&amp;fid=72&amp;sid=2iu2pf</code></li>
+<li>hacker想办法让用户访问这个url，让用户完成认证</li>
+<li>然后hacker就可以通过这个sid登录用户的账号</li>
+</ul>
+<p>但现在一般把sid放在Cookie中，Session Fixation用武之地会越来越小</p>
+<h2 id="Session保持攻击"><a href="#Session保持攻击" class="headerlink" title="Session保持攻击"></a>Session保持攻击</h2><ul>
+<li>Session一般有生命周期，如果用户长时间未活动、或者用户点击退出，Session就会被销毁</li>
+<li>一般的应用会给Session一个失效时间，到了这个时间会被强制销毁，但也有一些应用为了用户体验，只要用户还“活着”，Session就不会“死”</li>
+<li>所以hacker可以通过不停发送请求（比如刷新页面等），让这个Session一直活着</li>
+</ul>
+<h3 id="Session的另一种保存方式"><a href="#Session的另一种保存方式" class="headerlink" title="Session的另一种保存方式"></a>Session的另一种保存方式</h3><ul>
+<li>其实，服务器维护每一个用户的Session是很费资源的</li>
+<li>所以现在有一种做法，就是直接把Session加密保存在Cookie中（这种Cookie是Session Cookie，不是本地Cookie），用户发Cookie过来，服务器再解密。</li>
+<li>采用这种方式保存Session的应用一般用Cookie的Expire标签来控制Session的失效时间。</li>
+<li>因为Cookie在浏览器中，所以hacker可以通过XSS漏洞修改Cookie里的值，一方面可以把Session的Expire标签设置成永远，另一方面可以给Session Cookie设置一个Expire标签为永恒，那么这个Cookie就从Session Cookie变成了本地Cookie</li>
+</ul>
+<h3 id="对抗Session保持攻击"><a href="#对抗Session保持攻击" class="headerlink" title="对抗Session保持攻击"></a>对抗Session保持攻击</h3><ul>
+<li>一定时间后强制销毁Session，比如用户登录开始算的3天，但这会影响用户体验</li>
+<li>另一种方法是，当用户发生变化时，强制重新登录。例如IP、UserAgent等信息变化，强制销毁现在的Session</li>
+<li>还需要考虑的是，其实每个用户都可以拥有几个有效的Session，如果只有一个Session，用户就不能多设备登录了</li>
+</ul>
+<h2 id="单点登录（SSO）"><a href="#单点登录（SSO）" class="headerlink" title="单点登录（SSO）"></a>单点登录（SSO）</h2><ul>
+<li>用户只需要登录一次就可以访问所有的系统</li>
+<li>好处：用户体验好，方便。风险集中化，只要保护好这个点就行了，可以做一个相对严密复制一点的验证过程</li>
+<li>坏处：一旦被突破这一个点，hacker后面的路将一马平川</li>
+<li>OpenID就是一个开放的单点登录系统（在该系统中，URL就是用户的身份标识）</li>
+</ul>
+
+      
+
+ <!-- 添加版权声明 -->
+    
+
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      Bano
+    
+    <br>
+    <strong>本文链接：</strong>
+    <a href="https://bano247.com/2021/11/06/认证与会话管理/" title="认证与会话管理" target="_blank">https://bano247.com/2021/11/06/认证与会话管理/</a>
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+      <br>
+      <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="/img/1.png"/></a>
+    
+  </div>
+
+      <!-- 添加版权声明 -->
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝奶茶<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/04/HTML5%E5%AE%89%E5%85%A8/" class="archive-article-date">
-  	<time datetime="2021-11-03T17:28:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/04/HTML5%E5%AE%89%E5%85%A8/">HTML5安全</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-11-03T13:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/">点击劫持（ClickJacking）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web后端</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://bano247.com/2021/11/06/%E8%AE%A4%E8%AF%81%E4%B8%8E%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/03/%E8%B7%A8%E7%AB%99%E7%82%B9%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88CSRF%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-11-02T17:21:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-03</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2021/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          文件上传漏洞
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/11/06/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">访问控制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/03/%E8%B7%A8%E7%AB%99%E7%82%B9%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88CSRF%EF%BC%89/">跨站点请求伪造（CSRF）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Who-am-I"><span class="toc-number">1.</span> <span class="toc-text">Who am I?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%9B%A0%E7%B4%A0%E8%AE%A4%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">多因素认证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E4%B8%8E%E8%AE%A4%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">Session与认证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session-Fixation"><span class="toc-number">5.</span> <span class="toc-text">Session Fixation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E4%BF%9D%E6%8C%81%E6%94%BB%E5%87%BB"><span class="toc-number">6.</span> <span class="toc-text">Session保持攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Session%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E4%BF%9D%E5%AD%98%E6%96%B9%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">Session的另一种保存方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%8A%97Session%E4%BF%9D%E6%8C%81%E6%94%BB%E5%87%BB"><span class="toc-number">6.2.</span> <span class="toc-text">对抗Session保持攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88SSO%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">单点登录（SSO）</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/01/%E6%B5%85%E8%B0%88MVC%E6%9E%B6%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2021-11-01T15:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-01</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/01/%E6%B5%85%E8%B0%88MVC%E6%9E%B6%E6%9E%84/">浅谈MVC架构</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TIPS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/01/%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84window%E4%B8%8Edocument/" class="archive-article-date">
-  	<time datetime="2021-11-01T15:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/01/%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84window%E4%B8%8Edocument/">网页中的window与document</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TIPS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-10-31T15:53:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/">跨站脚本攻击（XSS）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/10/31/Cookie%E4%B8%8ESession/" class="archive-article-date">
-  	<time datetime="2021-10-31T15:51:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/10/31/Cookie%E4%B8%8ESession/">Cookie与Session</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TIPS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/" class="archive-article-date">
-  	<time datetime="2021-10-30T18:18:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/">浏览器安全</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -535,9 +506,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: false,

@@ -16,7 +16,7 @@
 <meta property="og:description" content="我们都是阴沟里的虫子,但总还是得有人仰望星空。   ——刘慈欣《三体》">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-31T15:51:27.000Z">
-<meta property="article:modified_time" content="2021-11-02T17:21:38.314Z">
+<meta property="article:modified_time" content="2021-11-04T05:33:05.871Z">
 <meta property="article:author" content="Bano">
 <meta property="article:tag" content="TIPS">
 <meta property="article:tag" content="web前端">
@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
         <nav>
-            Total_number_of_articles: 11
+            Total_number_of_articles: 14
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -174,7 +174,7 @@
         
        <i class="icon-statistics"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">403字</span>
+        <span class="post-count">399字</span>
       </span>
     </span>
 
@@ -210,12 +210,12 @@
 </ol>
 <h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><ol>
 <li>浏览器第一次发送请求到服务端</li>
-<li>服务端创建Session，同时会创建一个特殊的Cookie（name为JSSESIONID的固定值，value为session对象的ID），将Cookie发送给浏览器</li>
+<li>服务端创建Session，同时会创建一个特殊的Cookie（name为X，value为session对象的ID），将Cookie发送给浏览器</li>
 <li>浏览器再次访问服务端，会携带这个Cookie</li>
 <li>服务端根据Cookie的name和value，去查询对应的Session，从而分辨不同用户，此过程有3种情况：</li>
 </ol>
 <ul>
-<li>name为JSESSIONID的Cookie不存在（可能是关闭或更换过浏览器），返回第一步</li>
+<li>name为X的Cookie不存在（可能是关闭或更换过浏览器），返回第一步</li>
 <li>name合法，但不存在id为value的session（session默认存活30min），返回第一步</li>
 <li>name合法，value也合法，成功判断出用户身份</li>
 </ul>
@@ -550,6 +550,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">《白帽子讲web安全》</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web容器</a>
               </li>
             
             <div class="clearfix"></div>
