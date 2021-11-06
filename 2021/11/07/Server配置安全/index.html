@@ -6,23 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bano247.com">
-  <title>浏览器安全 | Bano写字的地方</title>
+  <title>Server配置安全 | Bano写字的地方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="回首半生匆匆，恍如一梦，你像风来了又走，我心满了又空。  ——张爱玲《半生缘》">
+  <meta name="description" content="我很努力去摆脱张志明，最后我发现…我成了另一个张志明。   ——《春娇与志明》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器安全">
-<meta property="og:url" content="https://bano247.com/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/index.html">
+<meta property="og:title" content="Server配置安全">
+<meta property="og:url" content="https://bano247.com/2021/11/07/Server%E9%85%8D%E7%BD%AE%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="Bano写字的地方">
-<meta property="og:description" content="回首半生匆匆，恍如一梦，你像风来了又走，我心满了又空。  ——张爱玲《半生缘》">
+<meta property="og:description" content="我很努力去摆脱张志明，最后我发现…我成了另一个张志明。   ——《春娇与志明》">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://bano247.com/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/1.jpg">
-<meta property="article:published_time" content="2021-10-30T18:18:01.000Z">
-<meta property="article:modified_time" content="2021-11-02T12:11:44.071Z">
+<meta property="article:published_time" content="2021-11-06T17:08:44.000Z">
+<meta property="article:modified_time" content="2021-11-06T17:13:45.387Z">
 <meta property="article:author" content="Bano">
-<meta property="article:tag" content="web前端">
 <meta property="article:tag" content="《白帽子讲web安全》">
+<meta property="article:tag" content="web容器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bano247.com/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Bano写字的地方" type="application/atom+xml">
   
@@ -149,20 +147,20 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-浏览器安全" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="web-Server配置安全" class="article article-type-web " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      浏览器安全
+      Server配置安全
     </h1>
   
 
         
-        <a href="/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/" class="archive-article-date">
-  	<time datetime="2021-10-30T18:18:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
+        <a href="/2021/11/07/Server%E9%85%8D%E7%BD%AE%E5%AE%89%E5%85%A8/" class="archive-article-date">
+  	<time datetime="2021-11-06T17:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-07</time>
 </a>
         
 
@@ -176,7 +174,7 @@
         
        <i class="icon-statistics"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">932字</span>
+        <span class="post-count">659字</span>
       </span>
     </span>
 
@@ -186,7 +184,7 @@
          
         <i class="icon-book icon"></i>
         <span class="post-meta-item-text"> 阅读时长≈</span>
-        <span class="post-count">3分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -201,57 +199,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/1.jpg" alt="label"></p>
-<p>回首半生匆匆，恍如一梦，你像风来了又走，我心满了又空。  ——张爱玲《半生缘》</p>
+        <p>我很努力去摆脱张志明，最后我发现…我成了另一个张志明。   ——《春娇与志明》</p>
 <span id="more"></span>
 
-<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>Origin = protocol + host + port</p>
-<p>源 = 协议 + 域名 + 端口</p>
-<p>理解：a.com的脚本，在未被b.com执行之前，无法修改b.com。所以不能让b.com随便执行a.com中的脚本</p>
-<p><strong>重要的是加载脚本的域，而不是存储脚本的域</strong></p>
-<h3 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h3><ul>
-<li><code>&lt;script&gt;,&lt;img&gt;,&lt;iframe&gt;,&lt;link&gt;</code>中的src属性每次被加载时，本质是执行了一次GET请求，他们是可以跨域加载资源的，但JavaScript不能读写返回的内容</li>
-<li>XMLHttpRequest，最初是不能跨域访问资源的，JavaScript的权限自然也不会受到限制</li>
-<li>后来制定了XMLHttpRequest跨域访问标准，需要目标域返回的http头来授权是否允许跨域访问</li>
-</ul>
-<h3 id="第三方插件"><a href="#第三方插件" class="headerlink" title="第三方插件"></a>第三方插件</h3><p>第三方插件也会受到同源策略的限制，以flash为例：目标域通过crossdomain.xml来判断是否允许其他源来访问资源</p>
-<p>hacker可以自己上传crossdomain.xml来绕开同源策略，解决方案：</p>
+<p>要关注web server的安全，一般是关注2点：</p>
 <ul>
-<li>Flash会检查crossdomain.xml是否在根目录下</li>
-<li>MINE检查：检查服务器的http返回头的content-Type</li>
+<li>web server本身是否安全</li>
+<li>web server是否提供了可使用的安全功能</li>
 </ul>
-<h2 id="浏览器沙箱"><a href="#浏览器沙箱" class="headerlink" title="浏览器沙箱"></a>浏览器沙箱</h2><h3 id="sandbox"><a href="#sandbox" class="headerlink" title="sandbox"></a>sandbox</h3><p>用于隔离不信任的代码，如果要跳出sandbox边界进行通信的话，只能通过特定的数据通道（例如封装的API），在数据通道中会进行严格的检查</p>
-<h3 id="挂马"><a href="#挂马" class="headerlink" title="挂马"></a>挂马</h3><h4 id="百度百科官方解释"><a href="#百度百科官方解释" class="headerlink" title="百度百科官方解释"></a>百度百科官方解释</h4><p>所谓的挂马，就是黑客通过各种手段，包括SQL注入，网站敏感文件扫描，服务器漏洞，网站程序0day,等各种方法获得网站管理员账号，然后登陆网站后台，通过数据库“备份/恢复”或者上传漏洞获得一个webshell。利用获得的webshell修改网站页面的内容，向页面中加入恶意转向代码。也可以直接通过弱口令获得服务器或者网站FTP，然后直接对网站页面直接进行修改。当你访问被加入恶意代码的页面时，你就会自动的访问被转向的地址或者下载木马病毒。</p>
-<h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><p>会在一个正常的网页，通过<code>&lt;script&gt;</code>或者<code>&lt;iframe&gt;</code>等标签加载一个恶意的网址</p>
-<p>为了应对hacker的挂马攻击，浏览器发展出了“多进程架构”</p>
-<h3 id="多进程架构"><a href="#多进程架构" class="headerlink" title="多进程架构"></a>多进程架构</h3><h4 id="以Chrome为例"><a href="#以Chrome为例" class="headerlink" title="以Chrome为例"></a>以Chrome为例</h4><p>主要进程：</p>
+<h2 id="Apache安全"><a href="#Apache安全" class="headerlink" title="Apache安全"></a>Apache安全</h2><ul>
+<li>以下的Apache均指Apache Httpd</li>
+<li>纵观Apache的漏洞使，Apache的核心和默认开启的module几乎没有漏洞，漏洞集中在默认没有安装或enable的module上</li>
+<li>所以，检查Apache安全，第一件事就是检查Apache的安装情况，根据“最小权限原则”，应尽可能地减少不必要的module，对于要使用的module，应检查其对应版本是否存在已知的安全漏洞</li>
+<li>检查完module之后，要指定Apache进程以一个单独的用户身份来运行，也就是给Apache单独建立一个user/group</li>
+<li>Apache里有很多对抗DDOS的参数，聊胜于无</li>
+<li>要保护好Apache Log，一般hacker入侵后，要做的第一件事就是清除入侵痕迹，修改删除日志文件。因此要妥善保存access log，例如实时地发送到远程的syslog服务器上</li>
+</ul>
+<h3 id="Apache以root或admin身份运行的坏处"><a href="#Apache以root或admin身份运行的坏处" class="headerlink" title="Apache以root或admin身份运行的坏处"></a>Apache以root或admin身份运行的坏处</h3><p>注：admin指服务器管理员在管理机器时使用的身份</p>
 <ul>
-<li>浏览器进程</li>
-<li>渲染进程</li>
-<li>插件进程</li>
-<li>扩展进程</li>
+<li>如果黑客入侵成功，直接获得了一个高权限的shell</li>
+<li>应用程序本身会有更高的权限，当出现bug时，可能会有意想不到的后果，例如删除了服务器的重要文件</li>
 </ul>
-<p>TIPS：</p>
-<ul>
-<li>插件进程与浏览器进程严格隔离</li>
-<li>渲染引擎由sandbox隔离，网页对吗如果想与浏览器内核进程通信、与操作系统通信，都需要经过IPC channel，在其中会进行安全检查</li>
+<h2 id="Nginx安全"><a href="#Nginx安全" class="headerlink" title="Nginx安全"></a>Nginx安全</h2><ul>
+<li>Nginx要关注软件本身的安全，及时升级软件版本</li>
+<li>Nginx也要以单独的user来运行</li>
+<li>Nginx也有一些对抗DDOS和CC攻击的配置</li>
 </ul>
-<h4 id="以IE为例"><a href="#以IE为例" class="headerlink" title="以IE为例"></a>以IE为例</h4><p>每一个Tab页是一个进程</p>
-<hr>
-<p>浏览器的一些第三方插件是不受sandbox管辖的，就有一定的安全风险</p>
-<h2 id="恶意网址拦截"><a href="#恶意网址拦截" class="headerlink" title="恶意网址拦截"></a>恶意网址拦截</h2><h3 id="恶意网址分类"><a href="#恶意网址分类" class="headerlink" title="恶意网址分类"></a>恶意网址分类</h3><ul>
-<li>挂马网站：网站包含恶意脚本</li>
-<li>钓鱼网站：模仿知名网站的相似页面来欺骗用户</li>
+<h2 id="jBoss远程命令执行"><a href="#jBoss远程命令执行" class="headerlink" title="jBoss远程命令执行"></a>jBoss远程命令执行</h2><ul>
+<li>jBoss是J2EE环境中的一个流行的web容器</li>
+<li>jBoss在默认安装时，会有不一个管理平台叫JMX- Console，用来给管理员一些强大的功能，但在默认安装时访问JMX-Console是不需要认证的</li>
+<li>所以hacker可以通过8080端口访问<code>/jmx-console</code>进入管理界面，从而配置MBeans、通过DeploymentScanner远程加载一个war包等</li>
 </ul>
-<h3 id="对抗方法"><a href="#对抗方法" class="headerlink" title="对抗方法"></a>对抗方法</h3><ul>
-<li>黑名单：浏览器会周期性地从服务器获取最新的黑名单（例如PhishTank,和Google的SafeBrowsingAPI)</li>
-<li>EVSSL证书</li>
+<h2 id="Tomcat远程命令执行"><a href="#Tomcat远程命令执行" class="headerlink" title="Tomcat远程命令执行"></a>Tomcat远程命令执行</h2><ul>
+<li>Apache Tomcat域jBoss一样，默认会在8080端口运行</li>
+<li>Tomcat提供的Tomcat Manager的作用和JMX-Console类似</li>
+<li>hacker一旦用暴力破解攻占了这个平台就可以进行上传war包等危险操作</li>
 </ul>
-<h4 id="EVSSL证书"><a href="#EVSSL证书" class="headerlink" title="EVSSL证书"></a>EVSSL证书</h4><ul>
-<li>EVSSL证书是“全球数字证书颁发机构”与“浏览器厂商”共同打造的“增强型证书”</li>
-<li>如果浏览器支持EV模式，就会给EVSSL证书一些特殊待遇，如果不支持，就会视其为普通证书</li>
-<li>例如：在Firefox中，EVSSL是绿色的，普通证书是无色的，以此来帮助用户对抗钓鱼网站</li>
-</ul>
+<h2 id="HPP攻击"><a href="#HPP攻击" class="headerlink" title="HPP攻击"></a>HPP攻击</h2><p>如果在GET或POST请求中，提交2个相同的参数，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?a=test&amp;a=test1</span><br></pre></td></tr></table></figure>
+<p>在某些服务器中，会取第一个参数，在另外的一些环境中，比如.net环境中，则会变成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=test,test1</span><br></pre></td></tr></table></figure>
 
       
 
@@ -265,7 +252,7 @@
     
     <br>
     <strong>本文链接：</strong>
-    <a href="https://bano247.com/2021/10/31/浏览器安全/" title="浏览器安全" target="_blank">https://bano247.com/2021/10/31/浏览器安全/</a>
+    <a href="https://bano247.com/2021/11/07/Server配置安全/" title="Server配置安全" target="_blank">https://bano247.com/2021/11/07/Server配置安全/</a>
     <br>
     <strong>版权声明：</strong>
     本作品采用
@@ -321,11 +308,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web容器</a>
         		</li>
       		
 		</ul>
@@ -381,7 +368,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://bano247.com/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://bano247.com/2021/11/07/Server%E9%85%8D%E7%BD%AE%E5%AE%89%E5%85%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -395,15 +382,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/10/31/Cookie%E4%B8%8ESession/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Cookie与Session
-        
-      </div>
-    </a>
   
+    <a href="/2021/11/06/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">拒绝服务攻击</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -428,7 +411,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-number">1.</span> <span class="toc-text">同源策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest"><span class="toc-number">1.1.</span> <span class="toc-text">XMLHttpRequest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">第三方插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B2%99%E7%AE%B1"><span class="toc-number">2.</span> <span class="toc-text">浏览器沙箱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sandbox"><span class="toc-number">2.1.</span> <span class="toc-text">sandbox</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E9%A9%AC"><span class="toc-number">2.2.</span> <span class="toc-text">挂马</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E7%99%BE%E7%A7%91%E5%AE%98%E6%96%B9%E8%A7%A3%E9%87%8A"><span class="toc-number">2.2.1.</span> <span class="toc-text">百度百科官方解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text">实现方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">多进程架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5Chrome%E4%B8%BA%E4%BE%8B"><span class="toc-number">2.3.1.</span> <span class="toc-text">以Chrome为例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5IE%E4%B8%BA%E4%BE%8B"><span class="toc-number">2.3.2.</span> <span class="toc-text">以IE为例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%B6%E6%84%8F%E7%BD%91%E5%9D%80%E6%8B%A6%E6%88%AA"><span class="toc-number">3.</span> <span class="toc-text">恶意网址拦截</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%B6%E6%84%8F%E7%BD%91%E5%9D%80%E5%88%86%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">恶意网址分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%8A%97%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">对抗方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#EVSSL%E8%AF%81%E4%B9%A6"><span class="toc-number">3.2.1.</span> <span class="toc-text">EVSSL证书</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache%E5%AE%89%E5%85%A8"><span class="toc-number">1.</span> <span class="toc-text">Apache安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache%E4%BB%A5root%E6%88%96admin%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8C%E7%9A%84%E5%9D%8F%E5%A4%84"><span class="toc-number">1.1.</span> <span class="toc-text">Apache以root或admin身份运行的坏处</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx%E5%AE%89%E5%85%A8"><span class="toc-number">2.</span> <span class="toc-text">Nginx安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jBoss%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">jBoss远程命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tomcat%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">Tomcat远程命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HPP%E6%94%BB%E5%87%BB"><span class="toc-number">5.</span> <span class="toc-text">HPP攻击</span></a></li></ol>
                     </div>
                 </span>
             </div>
