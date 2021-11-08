@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://bano247.com">
-  <title>Cookie与Session | Bano写字的地方</title>
+  <title>加密算法与随机数 | Bano写字的地方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们都是阴沟里的虫子,但总还是得有人仰望星空。   ——刘慈欣《三体》">
+  <meta name="description" content="一举一动，都是承诺，会被另一个人看在眼里，记在心上的。  ——宫崎骏《悬崖上的金鱼姬》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cookie与Session">
-<meta property="og:url" content="https://bano247.com/2021/10/31/Cookie%E4%B8%8ESession/index.html">
+<meta property="og:title" content="加密算法与随机数">
+<meta property="og:url" content="https://bano247.com/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/index.html">
 <meta property="og:site_name" content="Bano写字的地方">
-<meta property="og:description" content="我们都是阴沟里的虫子,但总还是得有人仰望星空。   ——刘慈欣《三体》">
+<meta property="og:description" content="一举一动，都是承诺，会被另一个人看在眼里，记在心上的。  ——宫崎骏《悬崖上的金鱼姬》">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-31T15:51:27.000Z">
-<meta property="article:modified_time" content="2021-11-04T05:33:05.871Z">
+<meta property="og:image" content="https://bano247.com/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/1.jpg">
+<meta property="og:image" content="https://bano247.com/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/2.png">
+<meta property="og:image" content="https://bano247.com/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/3.png">
+<meta property="article:published_time" content="2021-11-08T18:54:43.000Z">
+<meta property="article:modified_time" content="2021-11-08T19:15:08.338Z">
 <meta property="article:author" content="Bano">
-<meta property="article:tag" content="TIPS">
-<meta property="article:tag" content="web前端">
+<meta property="article:tag" content="《白帽子讲web安全》">
+<meta property="article:tag" content="web后端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bano247.com/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Bano写字的地方" type="application/atom+xml">
   
@@ -147,20 +151,20 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-Cookie与Session" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-加密算法与随机数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Cookie与Session
+      加密算法与随机数
     </h1>
   
 
         
-        <a href="/2021/10/31/Cookie%E4%B8%8ESession/" class="archive-article-date">
-  	<time datetime="2021-10-31T15:51:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
+        <a href="/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2021-11-08T18:54:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
 </a>
         
 
@@ -174,7 +178,7 @@
         
        <i class="icon-statistics"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">399字</span>
+        <span class="post-count">5.8k字</span>
       </span>
     </span>
 
@@ -184,7 +188,7 @@
          
         <i class="icon-book icon"></i>
         <span class="post-meta-item-text"> 阅读时长≈</span>
-        <span class="post-count">1分</span>
+        <span class="post-count">20分</span>
       </span>
     </span>
 </div>
@@ -199,41 +203,216 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我们都是阴沟里的虫子,但总还是得有人仰望星空。   ——刘慈欣《三体》</p>
+        <p><img src="/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/1.jpg"></p>
+<p>一举一动，都是承诺，会被另一个人看在眼里，记在心上的。  ——宫崎骏《悬崖上的金鱼姬》</p>
 <span id="more"></span>
 
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><ol>
-<li>浏览器第一次发送请求到服务端</li>
-<li>服务端创建Cookie（包含用户信息），然后向浏览器发送Set-Cookie头</li>
-<li>在该Cookie到期之前，浏览器访问该域下的所有界面，都会携带这个Cookie</li>
-<li>服务端通过Cookie上不同的数据，区分不同的用户</li>
-</ol>
-<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><ol>
-<li>浏览器第一次发送请求到服务端</li>
-<li>服务端创建Session，同时会创建一个特殊的Cookie（name为X，value为session对象的ID），将Cookie发送给浏览器</li>
-<li>浏览器再次访问服务端，会携带这个Cookie</li>
-<li>服务端根据Cookie的name和value，去查询对应的Session，从而分辨不同用户，此过程有3种情况：</li>
-</ol>
-<ul>
-<li>name为X的Cookie不存在（可能是关闭或更换过浏览器），返回第一步</li>
-<li>name合法，但不存在id为value的session（session默认存活30min），返回第一步</li>
-<li>name合法，value也合法，成功判断出用户身份</li>
+<h1 id="加密算法与随机数"><a href="#加密算法与随机数" class="headerlink" title="加密算法与随机数"></a>加密算法与随机数</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>常见的加密算法分为分组加密算法、流密码加密算法</li>
 </ul>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
-<li>cookie保存在浏览器，session保存在服务器</li>
-<li>cookie保存在本地，session_cookie保存在浏览器进程的内存空间中</li>
-<li>cookie的有效期可以在生成的时候设置，session的有效期取决于服务器，session_cookie在浏览器进程的生命周期内都是有效的</li>
-<li>session比cookie相对来说更安全，但session会占用服务器宝贵的资源</li>
+<h3 id="流密码加密算法"><a href="#流密码加密算法" class="headerlink" title="流密码加密算法"></a>流密码加密算法</h3><ul>
+<li>加密：使用初始密钥产生一个伪随机的密码流，连续地处理输入元素序列（通常是用密码流和输入序列做异或运算），产生对应的连续输出序列（密文）</li>
+<li>解密：采用和加密过程同样的伪随机流产生器算法对初始密钥产生一个相同的伪随机密码流，与密文序列做异或运算，得到明文序列。</li>
+</ul>
+<h2 id="Stream-Clipher-Attach"><a href="#Stream-Clipher-Attach" class="headerlink" title="Stream Clipher Attach"></a>Stream Clipher Attach</h2><h3 id="Reused-Key-Attack"><a href="#Reused-Key-Attack" class="headerlink" title="Reused Key Attack"></a>Reused Key Attack</h3><ul>
+<li>Reused Key Attack：使用同一个密钥进行多次加密/解密</li>
+<li>hacker在这种情况下，不需要知道密钥，就可以还原明文</li>
+</ul>
+<p>假设有密钥C，明文A，明文B，XOR加密表示为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E(A) = A xor C</span><br><span class="line">E(B) = B xor C</span><br></pre></td></tr></table></figure>
+<p>密文是公之于众的，因此很容易计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E(A) xor E(B) = A xor C xor B xor C = A xor B</span><br></pre></td></tr></table></figure>
+<p>利用上公式，知3可推1，整个过程和密钥已经没有关系了</p>
+<h3 id="Bit-flipping-Attack"><a href="#Bit-flipping-Attack" class="headerlink" title="Bit-flipping Attack"></a>Bit-flipping Attack</h3><ul>
+<li>Bit-flipping Attack：hacker在不知道明文的情况下，通过改变密文，使得明文按照其需要的方式发生改变</li>
+</ul>
+<h4 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h4><p>根据公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A xor E(A) xor B = E(B)</span><br></pre></td></tr></table></figure>
+<p>在一个网站应用，使用Cookie作为用户身份的认证凭证，而Cookie的值时通过xor加密得到的。认证的过程就是服务器解密Cookie，看一下是否合法。假设明文为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username + role</span><br></pre></td></tr></table></figure>
+<p>hacker先注册一个普通用户A，获得A的Cookie为Cookie(A)，然后构造了管理员的Cookie：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(accountA + member) xor Cookie(A) xor (admin_account+manager) = Cookie(admin)</span><br></pre></td></tr></table></figure>
+
+<h4 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h4><ul>
+<li>通过在Cookie中加入带有KEY的MAC（消息验证码，Message Authentication Code），通过MAC验证密文是否被篡改了</li>
+<li>通过哈希算法来实现的MAC，成为HMAC</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$operation</span> == <span class="string">&#x27;DECODE&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> ((substr(<span class="variable">$result</span>,<span class="number">0</span>,<span class="number">10</span>) == <span class="number">0</span> || substr(<span class="variable">$result</span>,<span class="number">0</span>,<span class="number">10</span>)-time()&gt;<span class="number">0</span>) &amp;&amp; substr(&amp;result,<span class="number">10</span>,<span class="number">16</span>) == substr(md5(substr(<span class="variable">$result</span>,<span class="number">26</span>).<span class="variable">$keyb</span>),<span class="number">0</span>,<span class="number">16</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> substr(<span class="variable">$result</span>,<span class="number">26</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>代码解释：</p>
+<ul>
+<li>密文前10个字节用来验证时间</li>
+<li>10-26个字节即为HMAC，用来验证密文是否被篡改</li>
+<li>26个字节以后，时真正的密文</li>
+<li>HMAC由<code>md5(substr($result,26).$keyb)</code>代码实现</li>
+<li>HMAC与真正的密文、$keyb有关，$keyb是由KEY变化的到的，如果KEY不泄露，HMAC是没办法伪造的</li>
+</ul>
+<h2 id="WEP破解"><a href="#WEP破解" class="headerlink" title="WEP破解"></a>WEP破解</h2><ul>
+<li>WEP是一种常用的无线加密传输协议</li>
+<li>破解WEP密钥是一种针对流密码的破解</li>
+<li>有一篇很好的论文“Security of the WEP algorithm”，博客最后会附上原文</li>
+</ul>
+<h2 id="ECB模式的缺陷"><a href="#ECB模式的缺陷" class="headerlink" title="ECB模式的缺陷"></a>ECB模式的缺陷</h2><ul>
+<li>改变分组密文的顺序，将改变明文顺序；替换某个分组密文，对应的明文也会替换，其他分组不会受影响</li>
+<li>当需要加密的明文多于一个分组的长度时，应该避免使用ECB模式</li>
+</ul>
+<p>场景：某在线支付应用，用户提交的密文对应的明文是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member=abc||pay=10000.00</span><br></pre></td></tr></table></figure>
+<p>前16个字节为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member=abc||pay=</span><br></pre></td></tr></table></figure>
+<p>这恰好是一个或两个分组的长度，hacker先购买一个1元的物品，来获取1.00的密文，然后用1.00的密文替换10000.00的密文即可</p>
+<h2 id="Padding-Oracle-Attack"><a href="#Padding-Oracle-Attack" class="headerlink" title="Padding Oracle Attack"></a>Padding Oracle Attack</h2><ul>
+<li>这是针对CBC模式的攻击，下面用DES加密为例</li>
+<li>分组加密通常要把消息分组（block），block的大小常见的有64bit、128bit、256bit，下面以64bit为例</li>
+<li>在分组过程中，如果最后一组不够长，需要在后面补位（例如，如果差3位就用3个0x03来补，差5位就用5个0x05来补，如果是满的需要再加8个0x08），加的这些字节就是padding</li>
+</ul>
+<h3 id="具体场景"><a href="#具体场景" class="headerlink" title="具体场景"></a>具体场景</h3><p>假设明文：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BRIAN;12;2;</span><br></pre></td></tr></table></figure>
+<p>经过DES加密后，密文为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7B216A634951170FF851D6CC68FC9537858795A28ED4AAC6</span><br></pre></td></tr></table></figure>
+<h4 id="hacker和我们公共知道的情报"><a href="#hacker和我们公共知道的情报" class="headerlink" title="hacker和我们公共知道的情报"></a>hacker和我们公共知道的情报</h4><ul>
+<li>密文采用了ASCII十六进制的表示方法，例如7B代表0x7B，所以2个密文代表一个字节，密文一共24个字节，只能被8整除，不能被16整除，所以判断分组长度应该为8。其中，第一个block是IV，后面是真正的密文</li>
+<li>Web应用在解密完成后，如果最后的padding不正确，会返回500的错误；如果padding正确，但解密出来的内容不正确，会返回200的自定义错误。</li>
+</ul>
+<h4 id="上帝视角的我们知道的情报"><a href="#上帝视角的我们知道的情报" class="headerlink" title="上帝视角的我们知道的情报"></a>上帝视角的我们知道的情报</h4><p>加密过程：</p>
+<p><img src="/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/2.png"></p>
+<p>解密过程：</p>
+<p><img src="/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/3.png"></p>
+<h4 id="hacker的思路"><a href="#hacker的思路" class="headerlink" title="hacker的思路"></a>hacker的思路</h4><ul>
+<li>现在已知Initialization Vector，想求Padded，那么等价于要求Intermediary Value</li>
+<li>先只考虑第一个block，只考虑最后一位，记Intermediary Value在本block的最后一位是x_1，那么我构造一个y，使得等式<code>x_1 ^ y = 0x01</code>成立（这是可以做到的，因为等式成立的那一次返回中，是200错误，其他情况下都是500错误；<strong>由此可见Padding Oracle实际上是一种边信道攻击</strong>），然后通过<code>x_1 = y ^ 0x01</code>我就求出了Intermediary Value在本bloke的最后一位</li>
+<li>然后我令<code>z_1 = x_1 ^ 0x02</code>，把它作为Intermediary Value在本block的最后一位，记Intermediary Value在本block的倒数第二位是x_2，然后找到y，使得<code>x_2 ^ y = 0x02</code>，然后<code>x_2 = y ^ 0x02</code>就求出了倒数第二位</li>
+<li>以此类推，我得到了全部的HEX</li>
+<li>用HEX和密文做一下疑惑操作，得到了明文</li>
+<li>我他娘的还真是个天才！</li>
+</ul>
+<h3 id="通过Padding-Oracle使得密文能够解密为任意明文"><a href="#通过Padding-Oracle使得密文能够解密为任意明文" class="headerlink" title="通过Padding Oracle使得密文能够解密为任意明文"></a>通过Padding Oracle使得密文能够解密为任意明文</h3><ul>
+<li>由上面的分析过程可知，明文就是Intermediary Value和IV（Initialization Vector）的异或。为了方便，我们下面记Intermediary Value为shellock</li>
+<li>记原来的密文有n组，记为<code>&#123;x_1,x_2,...,x_n&#125;</code>，那么hacker构造的明文也必须是n组，记为<code>&#123;y_1,y_2,...,y_n&#125;</code></li>
+<li>hacker先找到x_n的shellock，记为shellock_n，然后把shellock_n和y_n做异或运算，用得到的结果代替x_{n-1}（因为x_{n-1}其实就是第n组的IV）</li>
+<li>然后在通过x_{n-1}，找到shellock_{n-1}，把shellock_{n-1}与y_{n-1}做异或运算，用得到的结果代替x_{n-2}</li>
+<li>以此类推，得到了明文y对应的密文x</li>
+</ul>
+<h2 id="密钥管理"><a href="#密钥管理" class="headerlink" title="密钥管理"></a>密钥管理</h2><ul>
+<li>密码学的基本原则：密码系统的安全性应该依赖于密钥的复杂性，而不应该依赖于算法的保密性</li>
+<li>但实际上，更多的有关密码的安全事故，都是因为密钥没有妥善管理导致的</li>
+<li>密钥管理中最常见的错误，就是将密钥硬编码在代码里</li>
+</ul>
+<h3 id="硬编码的密钥被泄露的方式"><a href="#硬编码的密钥被泄露的方式" class="headerlink" title="硬编码的密钥被泄露的方式"></a>硬编码的密钥被泄露的方式</h3><ul>
+<li>代码被广泛传播。例如开源软件；有的商业软件并不开元，但编译后的二进制文件被用户下载，也可能被逆向工程反编译后，泄露硬编码的密钥</li>
+<li>软件开发团队的成员都能看代码。（有内鬼，终止交易</li>
+</ul>
+<h3 id="如何妥善管理"><a href="#如何妥善管理" class="headerlink" title="如何妥善管理"></a>如何妥善管理</h3><ul>
+<li>在应用发布到生产环境时，需要重新生成新的密钥或密码，以免与测试环境下的密钥相同</li>
+<li>一个较为安全的密钥管理系统，可以把所有的密钥（包括一些敏感的配置文件）都集中保存在一个服务器（集群）上，然后通过Web Service的方式，提供获取密钥的API</li>
+<li>每个Web应用通过带认证的API来访问密钥管理系统，动态获取密钥</li>
+<li>Web应用不能把密钥写进本地文件，只能加载进内存</li>
+<li>这样最大程度地保证了密钥的私密性，密钥集中管理，降低了系统对于密钥的耦合性，有利于定期更换密钥</li>
+</ul>
+<h2 id="伪随机数问题"><a href="#伪随机数问题" class="headerlink" title="伪随机数问题"></a>伪随机数问题</h2><ul>
+<li>伪随机数：通过一些数学算法生成的随机数。密码学上的安全伪随机数应该是不可压缩的</li>
+<li>真随机数：通过一些物理系统生成的随机数。例如电压的波动等</li>
+</ul>
+<h3 id="弱伪随机数"><a href="#弱伪随机数" class="headerlink" title="弱伪随机数"></a>弱伪随机数</h3><ul>
+<li>有的随机算法，生成的随机数是有限的，hacker可以直接遍历</li>
+<li>有的随机算法，生成的随机数是有规律的（例如递增），可以被hacker预测到</li>
+<li>密码、key、SessionID、token等往往都是用伪随机数生成的，如果是用的是弱伪随机数后果不堪设想</li>
+</ul>
+<h3 id="时间的随机性"><a href="#时间的随机性" class="headerlink" title="时间的随机性"></a>时间的随机性</h3><ul>
+<li>很多伪随机数算法与系统时间有关，生成的随机数是根据时间顺序增长的，可以从时间上进行预测</li>
+<li>开发程序时，<strong>不要把时间函数当成随机数使用</strong></li>
+</ul>
+<h3 id="破解伪随机数算法的种子"><a href="#破解伪随机数算法的种子" class="headerlink" title="破解伪随机数算法的种子"></a>破解伪随机数算法的种子</h3><ul>
+<li>在PHP中常用的伪随机算法有<code>rand()</code>和<code>mt_rand()</code></li>
+<li>伪随机数真正随机的是“种子(seed)”，种子一旦确定下来，在通过统一伪随机数算法计算出来的随机数，都是一样的。如果在一个程序中，程序开头播一次种，多次计算，所得值是不同的，但如果再调用这个程序，得到的值的顺序也是一样的</li>
+<li>很多时候，seed是有限的，hacker只要遍历所有的种子，就可以通过随机数破解出seed</li>
+<li>hacker在利用伪随机数时，有一个技巧：通过发送Keep-Alive HTTP头，迫使服务器使用同一个PHP进程相应请求，而在这个进程中，seed是固定的</li>
+</ul>
+<h4 id="Cross-Application-Attacks"><a href="#Cross-Application-Attacks" class="headerlink" title="Cross Application Attacks"></a>Cross Application Attacks</h4><p>例如，在一个服务器上安装了Wordpress与phpBB，hacker的攻击步骤：</p>
+<ol>
+<li>使用Keep-Alive HTTP请求，在phpBB论坛中搜索字符串‘a’</li>
+<li>会搜索到很多结果，hacker关心的是这次搜索的search_id（是个伪随机数）</li>
+<li>通过search_id破解出seed</li>
+<li>使用Keep-Alive HTTP头，给Wordpress发一个admin重制密码的请求</li>
+<li>Wordpress通过mt_rand()生成确认链接，并发送给管理员邮箱</li>
+<li>hacker根据seed，自己构造确认链接</li>
+<li>使用Keep-Alive HTTP头确认此链接，WordPress把新密码发送到管理员邮箱</li>
+<li>新密码是用mt_rand()生成的，hacker还是可以根据seed构造出来</li>
+<li>hacker获得了admin的新密码</li>
+</ol>
+<h3 id="使用安全的随机数"><a href="#使用安全的随机数" class="headerlink" title="使用安全的随机数"></a>使用安全的随机数</h3><ul>
+<li>在重要、敏感的地方，一定要用足够强的随机数生成算法（例如java中的java.security.SecureRandom；Linux中的/dev/random或者/dev/urandom等等）</li>
+<li>可以通过多个随机数组合，增加随机数的复杂性（例如，给随机数使用MD5算法，再连接一个随机字符，再使用MD5算一遍）</li>
+</ul>
+<h2 id="安全建议"><a href="#安全建议" class="headerlink" title="安全建议"></a>安全建议</h2><p>PS：这是书中建议原文，可能有些过时</p>
+<h4 id="在加密算法的选择和使用上，有以下最佳实践"><a href="#在加密算法的选择和使用上，有以下最佳实践" class="headerlink" title="在加密算法的选择和使用上，有以下最佳实践"></a>在加密算法的选择和使用上，有以下最佳实践</h4><ul>
+<li>不要使用ECB模式</li>
+<li>不要使用流密码（比如RC4）</li>
+<li>使用HMAC-SHA1代替MD5（甚至代替SHA1）</li>
+<li>不要使用相同的key做不同的事情</li>
+<li>salts域IV需要随机产生</li>
+<li>不要自己实现加密算法，尽量使用安全专家已经实现好的库</li>
+<li>不要依赖系统的保密性</li>
+</ul>
+<h4 id="当你不知道如何选择时，有如下建议"><a href="#当你不知道如何选择时，有如下建议" class="headerlink" title="当你不知道如何选择时，有如下建议"></a>当你不知道如何选择时，有如下建议</h4><ul>
+<li>使用CBC模式的AES256用于加密</li>
+<li>使用HMAC-SHA512用于完整性检查</li>
+<li>使用带salt的SHA-256或SHA-512用于Hashing</li>
 </ul>
 <hr>
-<p>So：把登录信息等重要信息存放为SESSION，其他信息如需保留，可以存放在COOKIE</p>
+<h2 id="Security-of-the-WEP-algorithm"><a href="#Security-of-the-WEP-algorithm" class="headerlink" title="Security of the WEP algorithm"></a>Security of the WEP algorithm</h2><p>这是关于我们对有线等效隐私（WEP）算法的分析的一些信息，WEP是802.11标准的一部分。这项工作由Nikita Borisov、Ian Goldberg和David Wagner联合表演。如果您有任何疑问，请通过<code>wep@isaac.cs.berkeley.edu</code>与我们联系。</p>
+<h3 id="执行摘要"><a href="#执行摘要" class="headerlink" title="执行摘要"></a>执行摘要</h3><p>我们发现了WEP算法中的一些缺陷，这严重损害了系统的安全主张。特别是，我们发现了以下类型的攻击：</p>
+<ul>
+<li>基于统计分析的被动攻击解密流量。</li>
+<li>根据已知的纯文本，主动攻击从未经授权的移动站注入新流量。</li>
+<li>根据欺骗接入点进行主动攻击来解密流量。</li>
+<li>字典构建攻击，在分析了大约一天的流量后，允许对所有流量进行实时自动解密。</li>
+</ul>
+<p>我们的分析表明，所有这些攻击都使用便宜的现成设备进行。我们建议任何使用802.11无线网络的人不要依赖WEP来获得安全，并采取其他安全措施来保护他们的无线网络。</p>
+<p>请注意，我们的攻击同样适用于40位和所谓的128位WEP版本。它们也适用于使用802.11b标准的网络（802.11b是802.11的扩展，以支持更高的数据速率；它使WEP算法保持不变）。</p>
+<h3 id="WEP设置"><a href="#WEP设置" class="headerlink" title="WEP设置"></a>WEP设置</h3><p>802.11标准描述了无线局域网（LAN）中发生的通信。有线等效隐私（WEP）算法用于保护无线通信免受窃听。WEP的次要功能是防止未经授权访问无线网络；该功能不是802.11标准的明确目标，但它通常被认为是WEP的一项功能。</p>
+<p>WEP依赖于移动站（例如带有无线以太网卡的笔记本电脑）和接入点（即基站）之间共享的秘密密钥。密钥用于在数据包传输之前对其进行加密，并使用完整性检查来确保数据包在传输过程中不会被修改。该标准不讨论如何建立共享密钥。在实践中，大多数安装使用一个密钥，该密钥在所有移动站和接入点之间共享。可以使用更复杂的密钥管理技术来帮助抵御我们描述的攻击；然而，我们所知道的商业系统都没有支持此类技术的机制。</p>
+<p>以下两节描述了算法中的问题和我们攻击的技术细节；它们假设了对加密协议的一些背景理解。您可能希望跳到以下部分，讨论攻击的实用性。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>WEP使用RC4加密算法，称为流密码。流密码通过将短键扩展为无限伪随机键流来操作。发送者XOR使用纯文本生成密码文本的密钥流。接收器有同一密钥的副本，并使用它生成相同的密钥流。用密码文本XORing键流会产生原始纯文本。</p>
+<p>这种操作模式使流密码容易受到多次攻击。如果攻击者在密码文本中翻转一点，那么解密后，纯文本中的相应位将被翻转。此外，如果窃听器拦截了两个使用同一密钥流加密的密码文本，则可以获取两个纯文本的XOR。了解此XOR可以使统计攻击恢复纯文本。随着使用相同键流的更多密码文本的已知，统计攻击变得越来越实用。一旦其中一个纯文本被知道，恢复所有其他纯文本就微不足道。</p>
+<p>WEP对这两种攻击都有防御能力。为确保数据包在传输过程中没有被修改，它在数据包中使用完整性检查（IC）字段。为了避免使用相同的密钥流加密两个密码文本，使用初始化向量（IV）来增强共享密钥，并为每个数据包生成不同的RC4密钥。IV也包含在包中。然而，这两项措施执行不正确，导致安全状况不佳。</p>
+<p>完整性检查字段作为CRC-32校验和实现，这是数据包加密有效负载的一部分。然而，CRC-32是线性的，这意味着可以根据两个CRC的接收消息的位差计算它们。换句话说，在消息中翻转位n会导致CRC中的一组确定性位，必须翻转这些位才能在修改的消息上产生正确的校验和。由于翻转位在RC4解密后会持续，这允许攻击者翻转加密消息中的任意位，并正确调整校验和，使生成的消息看起来有效。</p>
+<p>WEP中的初始化向量是一个24位字段，以消息的明文部分发送。如此小的初始化向量空间保证了同一密钥流的重用。一个繁忙的接入点以11Mbps不断发送1500字节数据包，将在<code>1500*8/(11*10^6)*2^24</code> =约18000秒或5小时后耗尽IV的空间。（时间可能更短，因为许多数据包小于1500字节。）这允许攻击者收集两个使用同一密钥流加密的密码文本，并执行统计攻击以恢复纯文本。更糟糕的是，当所有移动站都使用相同的密钥时，IV碰撞的可能性更大。例如，朗讯的普通无线网卡每次初始化时都会将IV重置为0，并将IV与每个数据包增加1。这意味着大约同时插入两张卡将为攻击者提供大量的IV碰撞。（更糟糕的是，802.11标准规定，使用每个数据包更改IV是可选的！）</p>
+<h3 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h3><h4 id="解密流量的被动攻击"><a href="#解密流量的被动攻击" class="headerlink" title="解密流量的被动攻击"></a>解密流量的被动攻击</h4><p>第一次袭击直接来自上述观察。被动窃听器可以拦截所有无线流量，直到IV碰撞发生。通过XORing使用同一IV的两个数据包，攻击者将获得两个纯文本消息的XOR。生成的XOR可用于推断有关两条消息内容的数据。IP流量通常非常可预测，并包含大量冗余。这种冗余可用于消除消息内容的许多可能性。对一条或两条消息内容的进一步有根据的猜测可用于统计学上缩小可能消息的空间，在某些情况下，可以确定确切内容。</p>
+<p>当这种仅基于两条消息的统计分析没有结果时，攻击者可以寻找同一IV的更多碰撞。所需时间只有很小的因素，因此可以恢复使用相同密钥流加密的少量消息，统计分析的成功率迅速提高。一旦可以恢复其中一条消息的整个纯文本，具有相同IV的所有其他消息的纯文本将直接跟随，因为所有配对XOR都是已知的。</p>
+<p>此攻击的扩展使用互联网上的某个主机将流量从外部发送到无线网络安装的主机。攻击者将知道此类流量的内容，从而生成已知的纯文本。当攻击者拦截其发送超过802.11的消息的加密版本时，他将能够解密使用相同初始化矢量的所有数据包。</p>
+<h4 id="主动攻击注入流量"><a href="#主动攻击注入流量" class="headerlink" title="主动攻击注入流量"></a>主动攻击注入流量</h4><p>以下攻击也是上一节所述问题的直接后果。假设攻击者知道一条加密消息的确切纯文本。他可以使用这些知识构建正确的加密数据包。该过程涉及构建新消息，计算CRC-32，并对原始加密消息执行位翻转，以将纯文本更改为新消息。基本属性是RC4(X) xor X xor Y = RC4(Y)。此数据包现在可以发送到接入点或移动站，并将被接受为有效数据包。</p>
+<p>对这次攻击的轻微修改使其更加阴险。即使对数据包不完全了解，也可以翻转消息中的选定位并成功调整加密CRC（如上一节所述），以获得修改后数据包的正确加密版本。如果攻击者部分了解数据包的内容，他可以拦截它并对它进行选择性修改。例如，可以通过telnet会话或与文件服务器的交互更改发送到shell的命令。</p>
+<h4 id="来自两端的主动攻击"><a href="#来自两端的主动攻击" class="headerlink" title="来自两端的主动攻击"></a>来自两端的主动攻击</h4><p>以前的攻击可以进一步扩展，以解密任意流量。在这种情况下，攻击者猜测的不是内容，而是数据包的标题。这些信息通常很容易获取或猜测；特别是，只需猜测目标IP地址。有了这些知识，攻击者可以翻转适当的位来转换目标IP地址，将数据包发送到他控制的机器，在互联网的某个地方，并使用流氓移动站传输。大多数无线安装都有互联网连接；数据包将由接入点成功解密，并通过适当的网关和路由器未加密转发到攻击者的机器，从而显示纯文本。如果可以猜测数据包的TCP标头，甚至可以将数据包上的目标端口更改为端口80，这将允许它通过大多数防火墙转发。</p>
+<h4 id="基于表格的攻击"><a href="#基于表格的攻击" class="headerlink" title="基于表格的攻击"></a>基于表格的攻击</h4><p>可能的初始化向量空间很小，允许攻击者构建解密表。一旦他学习了一些数据包的纯文本，他就可以计算所使用的IV生成的RC4密钥流。此密钥流可用于解密使用同一IV的所有其他数据包。随着时间的推移，也许使用上述技术，攻击者可以建立一个IV和相应关键流的表。此表需要相当少量的存储空间（约15GB）；一旦构建，攻击者可以解密通过无线链接发送的每个数据包。</p>
+<h3 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h3><p>尽管难以解码2.4GHz数字信号，但以消费者802.11产品的形式随时向攻击者提供收听802.11传输的硬件。产品拥有一切必要的监控能力，攻击者剩下的就是说服它为他们工作。</p>
+<p>虽然大多数802.11设备旨在忽略它没有密钥的加密内容，但我们通过更改驱动程序的配置成功拦截了WEP加密传输。我们能够混淆固件，以至于无法识别的数据包的密码文本（加密形式）被退回给我们进行进一步检查和分析。</p>
+<p>主动攻击（那些需要传输的攻击，而不仅仅是监控的攻击）似乎更困难，但并非不可能。许多802.11产品都配有可编程固件，可以逆向工程和修改，以提供向攻击者注入流量的能力。据此，这种反向工程是一项重要的时间投资（我们自己没有这样做），但重要的是要注意，这是一个一次性成本。一个称职的人可以投入这项工作，然后通过地下圈子分发流氓固件，或将其出售给对公司间谍活动感兴趣的各方。后者是高利润业务，因此时间投资很容易恢复。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>有线等效隐私（WEP）不是。该协议的问题是对一些加密原语的误解的结果，因此以不安全的方式将它们组合在一起。这些攻击表明，邀请具有加密协议设计专业知识的人进行公开审查的重要性；如果这样做了，这里描述的问题肯定会被避免。</p>
 
       
 
  <!-- 添加版权声明 -->
     
 
-  <div class="declare" hidden="hidden"></div>
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      Bano
+    
+    <br>
+    <strong>本文链接：</strong>
+    <a href="https://bano247.com/2021/11/09/加密算法与随机数/" title="加密算法与随机数" target="_blank">https://bano247.com/2021/11/09/加密算法与随机数/</a>
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+      <br>
+      <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="/img/1.png"/></a>
+    
+  </div>
 
       <!-- 添加版权声明 -->
 
@@ -268,17 +447,22 @@
     </div>
     <div class="article-info article-info-index">
       
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TIPS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">《白帽子讲web安全》</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web后端</a>
         		</li>
       		
 		</ul>
@@ -334,7 +518,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://bano247.com/2021/10/31/Cookie%E4%B8%8ESession/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://bano247.com/2021/11/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,18 +532,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/10/31/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%88XSS%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/11/09/%E5%88%86%E7%BB%84%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          跨站脚本攻击（XSS）
+          分组加密算法的几种工作模式
         
       </div>
     </a>
   
   
-    <a href="/2021/10/31/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浏览器安全</div>
+    <a href="/2021/11/08/%E6%88%91%E7%9A%84%E5%AE%89%E5%85%A8%E4%B8%96%E7%95%8C%E8%A7%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的安全世界观</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -386,7 +570,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie"><span class="toc-number">1.1.</span> <span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Session"><span class="toc-number">1.2.</span> <span class="toc-text">Session</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">区别</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">加密算法与随机数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">流密码加密算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream-Clipher-Attach"><span class="toc-number">1.2.</span> <span class="toc-text">Stream Clipher Attach</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reused-Key-Attack"><span class="toc-number">1.2.1.</span> <span class="toc-text">Reused Key Attack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bit-flipping-Attack"><span class="toc-number">1.2.2.</span> <span class="toc-text">Bit-flipping Attack</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">防御方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WEP%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">WEP破解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECB%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-number">1.4.</span> <span class="toc-text">ECB模式的缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Padding-Oracle-Attack"><span class="toc-number">1.5.</span> <span class="toc-text">Padding Oracle Attack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%9C%BA%E6%99%AF"><span class="toc-number">1.5.1.</span> <span class="toc-text">具体场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hacker%E5%92%8C%E6%88%91%E4%BB%AC%E5%85%AC%E5%85%B1%E7%9F%A5%E9%81%93%E7%9A%84%E6%83%85%E6%8A%A5"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">hacker和我们公共知道的情报</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E5%B8%9D%E8%A7%86%E8%A7%92%E7%9A%84%E6%88%91%E4%BB%AC%E7%9F%A5%E9%81%93%E7%9A%84%E6%83%85%E6%8A%A5"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">上帝视角的我们知道的情报</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hacker%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">hacker的思路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Padding-Oracle%E4%BD%BF%E5%BE%97%E5%AF%86%E6%96%87%E8%83%BD%E5%A4%9F%E8%A7%A3%E5%AF%86%E4%B8%BA%E4%BB%BB%E6%84%8F%E6%98%8E%E6%96%87"><span class="toc-number">1.5.2.</span> <span class="toc-text">通过Padding Oracle使得密文能够解密为任意明文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86"><span class="toc-number">1.6.</span> <span class="toc-text">密钥管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%BC%96%E7%A0%81%E7%9A%84%E5%AF%86%E9%92%A5%E8%A2%AB%E6%B3%84%E9%9C%B2%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text">硬编码的密钥被泄露的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A6%A5%E5%96%84%E7%AE%A1%E7%90%86"><span class="toc-number">1.6.2.</span> <span class="toc-text">如何妥善管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.</span> <span class="toc-text">伪随机数问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B1%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">1.7.1.</span> <span class="toc-text">弱伪随机数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%80%A7"><span class="toc-number">1.7.2.</span> <span class="toc-text">时间的随机性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%B4%E8%A7%A3%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%AE%97%E6%B3%95%E7%9A%84%E7%A7%8D%E5%AD%90"><span class="toc-number">1.7.3.</span> <span class="toc-text">破解伪随机数算法的种子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cross-Application-Attacks"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">Cross Application Attacks</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%89%E5%85%A8%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">1.7.4.</span> <span class="toc-text">使用安全的随机数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.8.</span> <span class="toc-text">安全建议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E9%80%89%E6%8B%A9%E5%92%8C%E4%BD%BF%E7%94%A8%E4%B8%8A%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.8.0.1.</span> <span class="toc-text">在加密算法的选择和使用上，有以下最佳实践</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%97%B6%EF%BC%8C%E6%9C%89%E5%A6%82%E4%B8%8B%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.8.0.2.</span> <span class="toc-text">当你不知道如何选择时，有如下建议</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Security-of-the-WEP-algorithm"><span class="toc-number">1.9.</span> <span class="toc-text">Security of the WEP algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%91%98%E8%A6%81"><span class="toc-number">1.9.1.</span> <span class="toc-text">执行摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEP%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.9.2.</span> <span class="toc-text">WEP设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.9.3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB"><span class="toc-number">1.9.4.</span> <span class="toc-text">攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E6%B5%81%E9%87%8F%E7%9A%84%E8%A2%AB%E5%8A%A8%E6%94%BB%E5%87%BB"><span class="toc-number">1.9.4.1.</span> <span class="toc-text">解密流量的被动攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E6%94%BB%E5%87%BB%E6%B3%A8%E5%85%A5%E6%B5%81%E9%87%8F"><span class="toc-number">1.9.4.2.</span> <span class="toc-text">主动攻击注入流量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A5%E8%87%AA%E4%B8%A4%E7%AB%AF%E7%9A%84%E4%B8%BB%E5%8A%A8%E6%94%BB%E5%87%BB"><span class="toc-number">1.9.4.3.</span> <span class="toc-text">来自两端的主动攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%A1%A8%E6%A0%BC%E7%9A%84%E6%94%BB%E5%87%BB"><span class="toc-number">1.9.4.4.</span> <span class="toc-text">基于表格的攻击</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7"><span class="toc-number">1.9.5.</span> <span class="toc-text">监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">1.9.6.</span> <span class="toc-text">结论</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
