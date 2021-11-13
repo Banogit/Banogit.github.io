@@ -16,6 +16,8 @@
 <meta property="og:description" content="不知道从什么时候开始，在什么东西上面都有个日期，秋刀鱼会过期，肉罐头会过期，连保鲜纸都会过期，我开始怀疑，在这个世界上，还有什么东西是不会过期的？  ——《重庆森林》">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/1.jpg">
+<meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/12.png">
+<meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/13.png">
 <meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/2.png">
 <meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/3.png">
 <meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/4.png">
@@ -27,7 +29,7 @@
 <meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/10.png">
 <meta property="og:image" content="https://bano247.com/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/11.png">
 <meta property="article:published_time" content="2021-11-03T13:14:00.000Z">
-<meta property="article:modified_time" content="2021-11-10T13:39:35.508Z">
+<meta property="article:modified_time" content="2021-11-13T17:12:12.302Z">
 <meta property="article:author" content="Bano">
 <meta property="article:tag" content="web前端">
 <meta name="twitter:card" content="summary">
@@ -185,7 +187,7 @@
         
        <i class="icon-statistics"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">7.3k字</span>
+        <span class="post-count">8.2k字</span>
       </span>
     </span>
 
@@ -195,7 +197,7 @@
          
         <i class="icon-book icon"></i>
         <span class="post-meta-item-text"> 阅读时长≈</span>
-        <span class="post-count">27分</span>
+        <span class="post-count">31分</span>
       </span>
     </span>
 </div>
@@ -214,9 +216,11 @@
 <p>不知道从什么时候开始，在什么东西上面都有个日期，秋刀鱼会过期，肉罐头会过期，连保鲜纸都会过期，我开始怀疑，在这个世界上，还有什么东西是不会过期的？  ——《重庆森林》</p>
 <span id="more"></span>
 
+<ul>
+<li>界面操作劫持攻击：通过在网页的可见输入控件上，覆盖一个不可见的框(iframe)，在用户不知情的情况下，窃取敏感信息、篡改数据等</li>
+</ul>
 <h2 id="何为点击劫持"><a href="#何为点击劫持" class="headerlink" title="何为点击劫持"></a>何为点击劫持</h2><ul>
 <li>视觉欺骗，hacker使用一个透明的iframe覆盖在网页上，然后诱导用户在该页面上操作，通过调整iframe的位置，让用户在不知不觉中在iframe上操作</li>
-<li>笔者感觉是，hacker在对网页取得一定控制权之后执行的攻击</li>
 </ul>
 <p>场景：</p>
 <p>在<code>http://www.a.com/test.html</code>页面中插入一个iframe</p>
@@ -248,9 +252,81 @@
 <li>拖拽操作是不受同源策略限制的</li>
 <li>思路：诱使用户从一个看不见的iframe中拖拽出hacker想要的数据，拖拽到hacker可控制的页面中，从而窃取数据</li>
 </ul>
+<h4 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h4><ul>
+<li>实现对其他页面链接的窃取，这些链接中可能会有session key、token等敏感信息</li>
+<li>把其他浏览器中的页面内容拖放到富文本编辑模式中，这样可以看到页面的源代码，这些html源代码可能会存在敏感信息</li>
+</ul>
+<h4 id="dataTransfer对象"><a href="#dataTransfer对象" class="headerlink" title="dataTransfer对象"></a>dataTransfer对象</h4><ul>
+<li>IE5.0后引入了dataTransfer对象，是event对象的一个属性，用于从被拖动的对象传递字符串到放置对象</li>
+<li>dataTransfer对象定义了两个主要方法：getData和setData，语句如下：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">event.dataTransfer.setData(<span class="string">&quot;text&quot;</span>,<span class="string">&quot;sometext&quot;</span>);</span><br><span class="line">event.dataTransfer.setData(<span class="string">&quot;URL&quot;</span>,<span class="string">&quot;http://www.test.com&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> url = event.dataTransfer.getData(<span class="string">&quot;URL&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> text = event.dataTransfer.getData(<span class="string">&quot;text&quot;</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>setData把数据存储在剪切板（在html5中，允许指定任意的MINE类型）</li>
+<li>getData用来获取由setData所存储的数据</li>
+</ul>
+<h4 id="拖放函数"><a href="#拖放函数" class="headerlink" title="拖放函数"></a>拖放函数</h4><p>当鼠标拖动了一个控件，源对象将依次出发以下函数：</p>
+<ul>
+<li>ondrag：在从drag动作开始，到drop动作结束的过程中，源对象触发的一个事件</li>
+<li>ondragstart：在drag动作开始时，源对象上触发的一个事件</li>
+<li>ondragend：在drop动作结束时，源对象上触发的一个事件</li>
+</ul>
+<p>当拖动对象到一个有效的目标上时，目的对象将依次触发以下函数：</p>
+<ul>
+<li>ondragenter：在drag动作进入某一有效目的对象时，该目的对象上触发的一个事件</li>
+<li>ondragover：在drag动作进入某一有效目的对象后，该目的对象上触发的一个事件</li>
+<li>ondragleave：在drag动作离开某一有效目的对象时，该目的对象上触发的一个事件</li>
+<li>ondrop：在任何有效目的对象上进行drop操作时，该目的对象上触发的一个事件</li>
+</ul>
 <h3 id="触屏劫持"><a href="#触屏劫持" class="headerlink" title="触屏劫持"></a>触屏劫持</h3><ul>
 <li>手机为了节省屏幕空间，会隐藏地址栏，使得触屏劫持更加不易被发现</li>
+<li>下面以IOS系统的Safari浏览器为例</li>
 </ul>
+<h4 id="桌面浏览器"><a href="#桌面浏览器" class="headerlink" title="桌面浏览器"></a>桌面浏览器</h4><ul>
+<li>Safari可以把网页添加到桌面，成为一个图标</li>
+<li>添加桌面图标的语句：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;icon.png&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加启动画面的语句：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;apple-touch-startup-image&quot; href=&quot;startup.png&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>全屏显示语句：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>改变状态栏样式（图中的status bar）：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black &quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/12.png"></p>
+<p>经过上面的操作，web页面和app已经差不多了，其中，全屏模式会隐藏URL地址栏和状态栏（URL text field和Button bar）</p>
+<h4 id="可视化区域viewport"><a href="#可视化区域viewport" class="headerlink" title="可视化区域viewport"></a>可视化区域viewport</h4><ul>
+<li>viewport就是除去所有工具栏、状态栏、滚动条等之后网页的可视区域（上图中的visible area）</li>
+<li>移动设备的屏幕大小不同于传统web，需要改变viewport：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中参数含义如下：</p>
+<ul>
+<li>width：viewport的宽度（范围从200到10000，默认980像素）</li>
+<li>initial-scale：初始的缩放比例（范围从0到10）</li>
+<li>maximum-scale：允许用户缩放到的最大比例</li>
+<li>user-scalable：用户是否可以手动缩放</li>
+</ul>
+<h4 id="隐藏的URL地址栏"><a href="#隐藏的URL地址栏" class="headerlink" title="隐藏的URL地址栏"></a>隐藏的URL地址栏</h4><p>除了全屏模式，还可以用这样的代码实现对URL的隐藏</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">&quot;setTimeout(function()&#123;window.scrollTo(0,1) &#125;,100);&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="触屏函数"><a href="#触屏函数" class="headerlink" title="触屏函数"></a>触屏函数</h4><p>Safari有自己独特的触屏API函数，这些函数可以模拟键鼠的操作：</p>
+<ul>
+<li>touchstart：手指放在屏幕上时触发</li>
+<li>Touchend：手指离开屏幕时触发</li>
+<li>touchmove：手指在屏幕上移动时触发</li>
+<li>touchcancel：系统可以取消touch事件</li>
+</ul>
+<p>在这些触屏移动设备中，同样可以使用透明层+iframe方法，然后配合触屏设备中自身的API函数来发起触屏劫持</p>
 <h2 id="防御ClickJacking"><a href="#防御ClickJacking" class="headerlink" title="防御ClickJacking"></a>防御ClickJacking</h2><h3 id="frame-busting"><a href="#frame-busting" class="headerlink" title="frame busting"></a>frame busting</h3><p>不想自己的网页被iframe：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span> != <span class="built_in">window</span>.top)&#123;</span><br><span class="line">    <span class="built_in">window</span>.top.location.href = correctURL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -268,6 +344,8 @@
 <li>SAMEORIGIN：frame页面的地址只能为同源域名下的页面</li>
 <li>ALLOW-FROM origin：可以定义允许frame加载的页面地址</li>
 </ul>
+<hr>
+<p><img src="/2021/11/03/%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81%EF%BC%88ClickJacking%EF%BC%89/13.png"></p>
 <hr>
 <h2 id="Busting-Frame-Busting-a-Study-of-Clickjacking-Vulnerabilities-on-Popular-Sites"><a href="#Busting-Frame-Busting-a-Study-of-Clickjacking-Vulnerabilities-on-Popular-Sites" class="headerlink" title="Busting Frame Busting:a Study of Clickjacking Vulnerabilities on Popular Sites"></a>Busting Frame Busting:a Study of Clickjacking Vulnerabilities on Popular Sites</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>Web框架攻击例如使用iframe来劫持用户的Web会话。最常见的防御措施，成为frame busting，防止一个网站从功能上载入一个frame框架，我们研究了Alexa Top-500网站的frame busting 实例，显示所有这些都可以以某种方式而绕过，一些绕过是由浏览器指定的，而其他的是跨浏览器工作的。由此我们建议使用适当的frame busting。</p>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Frame busing是由旨在防止网页加载到sub_frame中的网页自带的代码或者注释。Frame busing推荐用来防御点击劫持攻击[10]也推荐应用与基于图像的安全认证如雅虎的登陆密码。登陆密码显示用户所选择的图像用于向用户验证雅虎的登陆界面。没有使用frame busting的话，即使顶部的界面并不是真正的雅虎登陆界面，登陆界面还是能够被加载到子框架中以便正确的图像能够显示给用户。新的高级点击劫持技术使用drag-and-drop 从框架中提取和注入数据进一步显示了frame busting的重要性。</p>
@@ -564,7 +642,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81"><span class="toc-number">1.</span> <span class="toc-text">何为点击劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSRF%E5%92%8C%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81"><span class="toc-number">1.1.</span> <span class="toc-text">CSRF和点击劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E8%A6%86%E7%9B%96%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.</span> <span class="toc-text">图片覆盖攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%96%E6%8B%BD%E5%8A%AB%E6%8C%81"><span class="toc-number">1.3.</span> <span class="toc-text">拖拽劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%B1%8F%E5%8A%AB%E6%8C%81"><span class="toc-number">1.4.</span> <span class="toc-text">触屏劫持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1ClickJacking"><span class="toc-number">2.</span> <span class="toc-text">防御ClickJacking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#frame-busting"><span class="toc-number">2.1.</span> <span class="toc-text">frame busting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X-Frame-Options"><span class="toc-number">2.2.</span> <span class="toc-text">X-Frame-Options</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Busting-Frame-Busting-a-Study-of-Clickjacking-Vulnerabilities-on-Popular-Sites"><span class="toc-number">3.</span> <span class="toc-text">Busting Frame Busting:a Study of Clickjacking Vulnerabilities on Popular Sites</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">3.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9frame-busting%E7%9A%84%E8%B0%83%E6%9F%A5"><span class="toc-number">3.3.</span> <span class="toc-text">对frame busting的调查</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E8%A1%8C%E7%9A%84frame-busting%E4%BB%A3%E7%A0%81"><span class="toc-number">3.3.1.</span> <span class="toc-text">流行的frame busting代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%94%BB%E5%87%BB"><span class="toc-number">3.4.</span> <span class="toc-text">一般攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%A1%86%E6%9E%B6"><span class="toc-number">3.4.1.</span> <span class="toc-text">双框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#onBeforeUnload-%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.4.2.</span> <span class="toc-text">onBeforeUnload 事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OnBeforeUnload-%E2%80%93-204-Flushing"><span class="toc-number">3.4.3.</span> <span class="toc-text">OnBeforeUnload – 204 Flushing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8XSS%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">3.4.4.</span> <span class="toc-text">利用XSS过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#IE8"><span class="toc-number">3.4.4.1.</span> <span class="toc-text">IE8</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Google-chrome"><span class="toc-number">3.4.4.2.</span> <span class="toc-text">Google chrome</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#referrer-%E6%A3%80%E6%9F%A5%E9%97%AE%E9%A2%98"><span class="toc-number">3.4.5.</span> <span class="toc-text">referrer 检查问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Referre-and-double-framing"><span class="toc-number">3.4.5.1.</span> <span class="toc-text">Referre and double framing</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%86%99top-location"><span class="toc-number">3.4.6.</span> <span class="toc-text">重写top.location</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#IE7"><span class="toc-number">3.4.6.1.</span> <span class="toc-text">IE7</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Safari-4-0-4"><span class="toc-number">3.4.6.2.</span> <span class="toc-text">Safari 4.0.4</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IE-%E9%99%90%E5%88%B6%E5%9F%9F"><span class="toc-number">3.4.7.</span> <span class="toc-text">IE 限制域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B2%99%E7%AE%B1%E5%B1%9E%E6%80%A7"><span class="toc-number">3.4.8.</span> <span class="toc-text">沙箱属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.4.9.</span> <span class="toc-text">设计模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AB%99%E7%82%B9"><span class="toc-number">3.4.10.</span> <span class="toc-text">移动端站点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E7%AB%99%E7%82%B9%E6%94%BB%E5%87%BB"><span class="toc-number">3.5.</span> <span class="toc-text">指定站点攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E6%9A%97%E4%B8%AD%E7%9A%84%E4%B8%80%E6%9D%9F%E5%85%89"><span class="toc-number">3.5.1.</span> <span class="toc-text">黑暗中的一束光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%9F%E6%A3%80%E6%9F%A5%E9%94%99%E8%AF%AF"><span class="toc-number">3.5.2.</span> <span class="toc-text">域检查错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E4%BB%BB%E9%97%AE%E9%A2%98"><span class="toc-number">3.5.3.</span> <span class="toc-text">信任问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%9C%B0frame-busting"><span class="toc-number">3.6.</span> <span class="toc-text">安全地frame busting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#x-frame-options"><span class="toc-number">3.6.1.</span> <span class="toc-text">x-frame-options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">3.6.2.</span> <span class="toc-text">内容安全策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8javascript"><span class="toc-number">3.6.3.</span> <span class="toc-text">使用javascript</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="toc-number">3.7.</span> <span class="toc-text">相关工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">3.8.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81"><span class="toc-number">1.</span> <span class="toc-text">何为点击劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSRF%E5%92%8C%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81"><span class="toc-number">1.1.</span> <span class="toc-text">CSRF和点击劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E8%A6%86%E7%9B%96%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.</span> <span class="toc-text">图片覆盖攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%96%E6%8B%BD%E5%8A%AB%E6%8C%81"><span class="toc-number">1.3.</span> <span class="toc-text">拖拽劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B1%E5%AE%B3"><span class="toc-number">1.3.1.</span> <span class="toc-text">危害</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dataTransfer%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">dataTransfer对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%96%E6%94%BE%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.3.</span> <span class="toc-text">拖放函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%B1%8F%E5%8A%AB%E6%8C%81"><span class="toc-number">1.4.</span> <span class="toc-text">触屏劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A1%8C%E9%9D%A2%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">桌面浏览器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8C%BA%E5%9F%9Fviewport"><span class="toc-number">1.4.2.</span> <span class="toc-text">可视化区域viewport</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E7%9A%84URL%E5%9C%B0%E5%9D%80%E6%A0%8F"><span class="toc-number">1.4.3.</span> <span class="toc-text">隐藏的URL地址栏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A6%E5%B1%8F%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.4.</span> <span class="toc-text">触屏函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1ClickJacking"><span class="toc-number">2.</span> <span class="toc-text">防御ClickJacking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#frame-busting"><span class="toc-number">2.1.</span> <span class="toc-text">frame busting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X-Frame-Options"><span class="toc-number">2.2.</span> <span class="toc-text">X-Frame-Options</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Busting-Frame-Busting-a-Study-of-Clickjacking-Vulnerabilities-on-Popular-Sites"><span class="toc-number">3.</span> <span class="toc-text">Busting Frame Busting:a Study of Clickjacking Vulnerabilities on Popular Sites</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">3.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9frame-busting%E7%9A%84%E8%B0%83%E6%9F%A5"><span class="toc-number">3.3.</span> <span class="toc-text">对frame busting的调查</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E8%A1%8C%E7%9A%84frame-busting%E4%BB%A3%E7%A0%81"><span class="toc-number">3.3.1.</span> <span class="toc-text">流行的frame busting代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%94%BB%E5%87%BB"><span class="toc-number">3.4.</span> <span class="toc-text">一般攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%A1%86%E6%9E%B6"><span class="toc-number">3.4.1.</span> <span class="toc-text">双框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#onBeforeUnload-%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.4.2.</span> <span class="toc-text">onBeforeUnload 事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OnBeforeUnload-%E2%80%93-204-Flushing"><span class="toc-number">3.4.3.</span> <span class="toc-text">OnBeforeUnload – 204 Flushing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8XSS%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">3.4.4.</span> <span class="toc-text">利用XSS过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#IE8"><span class="toc-number">3.4.4.1.</span> <span class="toc-text">IE8</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Google-chrome"><span class="toc-number">3.4.4.2.</span> <span class="toc-text">Google chrome</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#referrer-%E6%A3%80%E6%9F%A5%E9%97%AE%E9%A2%98"><span class="toc-number">3.4.5.</span> <span class="toc-text">referrer 检查问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Referre-and-double-framing"><span class="toc-number">3.4.5.1.</span> <span class="toc-text">Referre and double framing</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%86%99top-location"><span class="toc-number">3.4.6.</span> <span class="toc-text">重写top.location</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#IE7"><span class="toc-number">3.4.6.1.</span> <span class="toc-text">IE7</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Safari-4-0-4"><span class="toc-number">3.4.6.2.</span> <span class="toc-text">Safari 4.0.4</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IE-%E9%99%90%E5%88%B6%E5%9F%9F"><span class="toc-number">3.4.7.</span> <span class="toc-text">IE 限制域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B2%99%E7%AE%B1%E5%B1%9E%E6%80%A7"><span class="toc-number">3.4.8.</span> <span class="toc-text">沙箱属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.4.9.</span> <span class="toc-text">设计模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AB%99%E7%82%B9"><span class="toc-number">3.4.10.</span> <span class="toc-text">移动端站点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E7%AB%99%E7%82%B9%E6%94%BB%E5%87%BB"><span class="toc-number">3.5.</span> <span class="toc-text">指定站点攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E6%9A%97%E4%B8%AD%E7%9A%84%E4%B8%80%E6%9D%9F%E5%85%89"><span class="toc-number">3.5.1.</span> <span class="toc-text">黑暗中的一束光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%9F%E6%A3%80%E6%9F%A5%E9%94%99%E8%AF%AF"><span class="toc-number">3.5.2.</span> <span class="toc-text">域检查错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E4%BB%BB%E9%97%AE%E9%A2%98"><span class="toc-number">3.5.3.</span> <span class="toc-text">信任问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%9C%B0frame-busting"><span class="toc-number">3.6.</span> <span class="toc-text">安全地frame busting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#x-frame-options"><span class="toc-number">3.6.1.</span> <span class="toc-text">x-frame-options</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">3.6.2.</span> <span class="toc-text">内容安全策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8javascript"><span class="toc-number">3.6.3.</span> <span class="toc-text">使用javascript</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="toc-number">3.7.</span> <span class="toc-text">相关工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">3.8.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
